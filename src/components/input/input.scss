@@ -1,0 +1,21 @@
+.input {
+  color: #000000;
+  font-family: 'Roboto';
+  font-weight: 500;
+  line-height: 36px;
+
+  &__field {
+    width: 100%;
+    padding: 11px;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid #1f1e25;
+    border-radius: 4px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+}
