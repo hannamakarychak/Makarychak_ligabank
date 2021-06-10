@@ -4,7 +4,8 @@
 
 :root {
   --accent-bg-color: #2c36f2;
-  --font-color-light: #f6f7ff;
+  --color-light: #f6f7ff;
+  --font-color-dark: #1f1e25;
 }
 
 body {

@@ -3,15 +3,11 @@ import PropTypes from 'prop-types'
 
 import './select.scss';
 
-const Select = ({name}) => {
+const Select = ({name, options}) => {
   return (
-    <select name={name} className={name}>
-        <option value="rub">RUB</option>
-        <option value="usd">USD</option>
-        <option value="eur">EUR</option>
-        <option value="gbp">GBP</option>
-        <option value="cny">CNY</option>
-      </select>
+    <select name={name} className="select">
+      {options.map(value => <option value={value} key={`${name+value}`}>{value.toUpperCase()}</option>)}
+    </select>
   )
 }
 
