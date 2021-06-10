@@ -1,10 +1,11 @@
-
-import './App.css';
+import Container from './components/container/container';
 import Converter from './components/converter/converter';
 
 function App() {
   return (
-    <Converter />
+    <Container>
+      <Converter />
+    </Container>
   );
 }
 
