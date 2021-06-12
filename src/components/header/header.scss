@@ -1,0 +1,39 @@
+.header {
+  padding: 37px 0;
+  background-color: var(--color-light);
+
+  &__logo {
+    align-self: flex-start;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__login-link {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    text-decoration: none;
+    color: var(--font-color-dark);
+
+    &:hover {
+      color: var(--accent-bg-color);
+    }
+
+    &:hover .header__login-icon {
+      fill: var(--accent-bg-color);
+    }
+  }
+
+  &__login-icon {
+    margin-right: 10px;
+    fill: var(--font-color-dark);
+
+    &:hover {
+      fill: var(--accent-bg-color);
+    }
+  }
+}
