@@ -1,14 +1,20 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import './input.scss';
 
-const Input = ({ type, id, name, label }) => {
+const Input = ({ type, id, name, label, value, onChange }) => {
   return (
     <div className="input">
       <label htmlFor={id} className="input__label">
         {label}
       </label>
-      <input type={type} id={id} name={name} className="input__field"></input>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        className="input__field"
+        onChange={(e) => onChange(e.target.value)}
+        value={value}
+      ></input>
     </div>
   );
 };
