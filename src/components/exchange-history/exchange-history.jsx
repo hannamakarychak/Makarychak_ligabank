@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import './exchange-history.scss';
+import dayjs from 'dayjs';
 
 const ExchangeHistory = ({ list, onClear }) => {
-  console.log({ list });
   return (
     <div className="exchange-history">
       <h3 className="exchange-history__heading">История конвертация</h3>
@@ -31,7 +31,7 @@ const ExchangeHistory = ({ list, onClear }) => {
 const ListChunk = ({ list }) => {
   return list.map((item) => (
     <li className="exchange-history__item" key={item.id}>
-      <span className="exchange-history__date">{item.date.toLocaleDateString('ru-Latn')}</span>
+      <span className="exchange-history__date">{dayjs(item.date).format('DD.MM.YYYY')}</span>
       <span className="exchange-history__from">
         {item.baseAmount} {item.baseCurrency}
       </span>
@@ -50,7 +50,7 @@ ExchangeHistory.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       date: PropTypes.object.isRequired,
-      baseAmount: PropTypes.string.isRequired,
+      baseAmount: PropTypes.number.isRequired,
       baseCurrency: PropTypes.string.isRequired,
       resultAmount: PropTypes.number.isRequired,
       resultCurrency: PropTypes.string.isRequired,

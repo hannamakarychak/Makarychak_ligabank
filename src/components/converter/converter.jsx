@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import dayjs from 'dayjs';
+import React, { useEffect, useState } from 'react';
+import { DATE_FORMAT, getExchangeRates } from '../../api';
 import { CURRENCIES } from '../../constants';
 import Button from '../button/button';
 import Calendar from '../calendar/calendar';
@@ -8,41 +10,38 @@ import Select from '../select/select';
 
 import './converter.scss';
 
-const TEMP_RATE = 1.5;
+const DEFAULT_RATE = 1;
 
 const Converter = ({ onSave }) => {
-  const [baseAmount, setBaseAmount] = useState('');
-  const [resultAmount, setResultAmount] = useState('');
+  const [baseAmount, setBaseAmount] = useState(0);
+  const [resultAmount, setResultAmount] = useState(0);
   const [baseCurrency, setBaseCurrency] = useState('RUB');
   const [resultCurrency, setResultCurrency] = useState('RUB');
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [rates, setRates] = useState(null);
 
-  const handleChangeBaseAmount = (value) => {
-    setBaseAmount(value);
-    setResultAmount(value * TEMP_RATE);
-  };
+  const selectedDateFormatted = dayjs(selectedDate).format(DATE_FORMAT);
+  const currentRate = rates ? rates[selectedDateFormatted][resultCurrency] : DEFAULT_RATE;
+
+  useEffect(() => {
+    getExchangeRates(baseCurrency).then((rates) => {
+      setRates(rates);
+    });
+  }, [baseCurrency]);
+
+  useEffect(() => {
+    setResultAmount(baseAmount * currentRate);
+  }, [currentRate, baseAmount]);
 
   const handleChangeResultAmount = (value) => {
     setResultAmount(value);
-    setBaseAmount(value / TEMP_RATE);
-  };
-
-  const handleChangeBaseCurrency = (currency) => {
-    setBaseCurrency(currency);
-  };
-
-  const handleChangeResultCurrency = (currency) => {
-    setResultCurrency(currency);
-  };
-
-  const handleChangeSelectedDate = (date) => {
-    setSelectedDate(date);
+    setBaseAmount(value / currentRate);
   };
 
   const handleSaveClick = () => {
     onSave({
-      baseAmount,
-      resultAmount,
+      baseAmount: +baseAmount,
+      resultAmount: +resultAmount,
       baseCurrency,
       resultCurrency,
       date: selectedDate,
@@ -65,13 +64,13 @@ const Converter = ({ onSave }) => {
           type="number"
           label="У меня есть"
           value={baseAmount}
-          onChange={handleChangeBaseAmount}
+          onChange={setBaseAmount}
         />
         <Select
           name="base-currency"
           options={CURRENCIES}
           value={baseCurrency}
-          onChange={handleChangeBaseCurrency}
+          onChange={setBaseCurrency}
         />
         <DoubleArrow className="converter__arrow" />
         <Input
@@ -86,13 +85,9 @@ const Converter = ({ onSave }) => {
           name="result-currency"
           options={CURRENCIES}
           value={resultCurrency}
-          onChange={handleChangeResultCurrency}
+          onChange={setResultCurrency}
         />
-        <Calendar
-          className="converter__calendar"
-          value={selectedDate}
-          onChange={handleChangeSelectedDate}
-        />
+        <Calendar className="converter__calendar" value={selectedDate} onChange={setSelectedDate} />
         <Button className="converter__button button button--primary" onClick={handleSaveClick} />
       </form>
     </div>
