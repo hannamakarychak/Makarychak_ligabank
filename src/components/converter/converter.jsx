@@ -10,20 +10,12 @@ import './converter.scss';
 
 const TEMP_RATE = 1.5;
 
-const Converter = () => {
+const Converter = ({ onSave }) => {
   const [baseAmount, setBaseAmount] = useState('');
   const [resultAmount, setResultAmount] = useState('');
-  const [baseCurrency, setBaseCurrency] = useState('');
-  const [resultCurrency, setResultCurrency] = useState('');
+  const [baseCurrency, setBaseCurrency] = useState('RUB');
+  const [resultCurrency, setResultCurrency] = useState('RUB');
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  console.log('STATE: ', {
-    baseAmount,
-    resultAmount,
-    baseCurrency,
-    resultCurrency,
-    selectedDate,
-  });
 
   const handleChangeBaseAmount = (value) => {
     setBaseAmount(value);
@@ -45,6 +37,17 @@ const Converter = () => {
 
   const handleChangeSelectedDate = (date) => {
     setSelectedDate(date);
+  };
+
+  const handleSaveClick = () => {
+    onSave({
+      baseAmount,
+      resultAmount,
+      baseCurrency,
+      resultCurrency,
+      date: selectedDate,
+      id: Date.now(),
+    });
   };
 
   return (
@@ -90,7 +93,7 @@ const Converter = () => {
           value={selectedDate}
           onChange={handleChangeSelectedDate}
         />
-        <Button className="converter__button button button--primary" />
+        <Button className="converter__button button button--primary" onClick={handleSaveClick} />
       </form>
     </div>
   );
