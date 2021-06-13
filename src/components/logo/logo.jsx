@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './logo.scss';
 
-export const Logo = ({ className }) => {
+const Logo = ({ className }) => {
   return (
-    <div className={className}>
+    <div className={classNames('logo', className)}>
       <svg
         className="logo__icon"
         width="30"
@@ -43,3 +45,9 @@ export const Logo = ({ className }) => {
     </div>
   );
 };
+
+Logo.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
+export default Logo;

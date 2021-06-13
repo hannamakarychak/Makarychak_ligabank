@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './navigation.scss';
 
-export const Navigation = ({ className }) => {
+const Navigation = ({ className }) => {
   return (
-    <nav className={className}>
+    <nav className={classNames('navigation', className)}>
       <ul className="navigation__list">
         <li className="navigation__item">
           <a className="navigation__link" href="#">
@@ -35,3 +37,9 @@ export const Navigation = ({ className }) => {
     </nav>
   );
 };
+
+Navigation.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
+export default Navigation;
