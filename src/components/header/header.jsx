@@ -7,11 +7,11 @@ import './header.scss';
 
 const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <Container className="header__wrapper">
         <Logo className="header__logo" />
         <Navigation className="header__navigation" />
-        <a className="header__login-link" href="#">
+        <a className="header__login-link" href="/">
           <svg
             className="header__login-icon"
             width="20"
@@ -24,7 +24,7 @@ const Header = () => {
           <span className="header__login-text"> Войти в Интернет-банк</span>
         </a>
       </Container>
-    </div>
+    </header>
   );
 };
 

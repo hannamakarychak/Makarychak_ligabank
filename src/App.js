@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import Container from './components/container/container';
 import Converter from './components/converter/converter';
 import ExchangeHistory from './components/exchange-history/exchange-history';
+import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Hero from './components/hero/hero';
 
@@ -27,6 +28,7 @@ function App() {
         <Converter onSave={handleSaveClick} />
         <ExchangeHistory list={[...history].reverse()} onClear={() => setHistory([])} />
       </Container>
+      <Footer />
     </Fragment>
   );
 }
