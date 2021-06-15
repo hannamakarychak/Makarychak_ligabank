@@ -14,6 +14,14 @@
     background-image: url('../../img/black-card.png'), url('../../img/white-card.png');
     background-position: 639px 138px, 748px 80px;
     background-repeat: no-repeat;
+    background-size: 335px 228px;
+
+    @media only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../../img/black-card@2x.png'), url('../../img/white-card@2x.png');
+    }
   }
 
   &__heading {

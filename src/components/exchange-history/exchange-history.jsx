@@ -1,18 +1,23 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
+
+import Button from '../button/button';
 
 import './exchange-history.scss';
-import dayjs from 'dayjs';
-import Button from '../button/button';
 
 const ExchangeHistory = ({ list, onClear }) => {
   return (
     <div className="exchange-history">
       <h3 className="exchange-history__heading">История конвертация</h3>
       <ul className="exchange-history__list">
-        <div className="exchange-history__col">
-          <ListChunk list={list.slice(0, 5)} />
-        </div>
+        {list.length === 0 ? (
+          'История пуста'
+        ) : (
+          <div className="exchange-history__col">
+            <ListChunk list={list.slice(0, 5)} />
+          </div>
+        )}
         {list.length > 5 && (
           <Fragment>
             <div className="exchange-history__separator" />
