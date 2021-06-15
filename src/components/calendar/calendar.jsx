@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment, useState } from 'react';
+import React, { forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -43,6 +43,7 @@ const CustomInput = forwardRef(({ value, onClick, className }, ref) => (
 
 Calendar.propTypes = {
   className: PropTypes.string.isRequired,
+  //
 };
 
 export default Calendar;

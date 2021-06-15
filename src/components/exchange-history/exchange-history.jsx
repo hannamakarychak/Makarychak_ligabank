@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './exchange-history.scss';
 import dayjs from 'dayjs';
+import Button from '../button/button';
 
 const ExchangeHistory = ({ list, onClear }) => {
   return (
@@ -21,9 +22,9 @@ const ExchangeHistory = ({ list, onClear }) => {
           </Fragment>
         )}
       </ul>
-      <button className="exchange-history__button button button--primary" onClick={onClear}>
+      <Button className="exchange-history__button" onClick={onClear}>
         Очистить историю
-      </button>
+      </Button>
     </div>
   );
 };

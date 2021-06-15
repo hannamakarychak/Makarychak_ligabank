@@ -35,7 +35,6 @@ const BottomNavigation = ({ className }) => {
 
 BottomNavigation.propTypes = {
   className: PropTypes.string.isRequired,
-  listClassName: PropTypes.string,
 };
 
 export default BottomNavigation;

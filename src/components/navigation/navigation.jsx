@@ -39,7 +39,6 @@ const Navigation = ({ className }) => {
 
 Navigation.propTypes = {
   className: PropTypes.string.isRequired,
-  listClassName: PropTypes.string,
 };
 
 export default Navigation;

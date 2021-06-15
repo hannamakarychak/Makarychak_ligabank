@@ -88,7 +88,9 @@ const Converter = ({ onSave }) => {
           onChange={setResultCurrency}
         />
         <Calendar className="converter__calendar" value={selectedDate} onChange={setSelectedDate} />
-        <Button className="converter__button button button--primary" onClick={handleSaveClick} />
+        <Button className="converter__button" onClick={handleSaveClick}>
+          Сохранить результат
+        </Button>
       </form>
     </div>
   );

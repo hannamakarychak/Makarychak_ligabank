@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '../container/container';
+import Button from '../button/button';
 
 import './hero.scss';
 
@@ -9,7 +10,9 @@ const Hero = () => {
       <Container className="hero__wrapper">
         <h1 className="hero__heading">Лига Банк</h1>
         <div className="hero__moto">Кредиты на любой случай</div>
-        <button className="hero__button button button--inverted">Рассчитать кредит</button>
+        <Button className="hero__button" isInverted>
+          Рассчитать кредит
+        </Button>
       </Container>
     </section>
   );
