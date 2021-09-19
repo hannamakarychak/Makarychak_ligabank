@@ -6,3 +6,17 @@
     margin-right: 9px;
   }
 }
+
+@media only screen and (max-width: 1023px) {
+  .logo {
+    &__icon {
+      margin-right: 9px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .logo__text {
+    margin-right: auto;
+  }
+}

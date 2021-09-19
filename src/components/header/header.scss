@@ -36,4 +36,62 @@
       fill: var(--accent-bg-color);
     }
   }
+
+  &__burger {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .header {
+    padding: 23px 0 19px 0;
+  }
+
+  .header__login-text {
+    display: none;
+  }
+
+  .header__close--tablet {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    height: 100vh;
+  }
+
+  .header__logo {
+    flex-basis: 70%;
+  }
+
+  .header__burger {
+    display: block;
+    margin-right: 14px;
+    fill: #1f1e25;
+  }
+
+  .header__wrapper {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .header__login-link {
+    margin-left: auto;
+  }
+
+  .header__login-icon {
+    margin-right: 0;
+  }
+
+  .header__close {
+    position: absolute;
+    top: 6px;
+    right: 16px;
+
+    &--tablet {
+      display: block;
+    }
+  }
 }

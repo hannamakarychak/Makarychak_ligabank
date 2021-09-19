@@ -24,11 +24,11 @@ function App() {
     <Fragment>
       <Header />
       <Hero />
-      <Container>
+      {/* <Container>
         <Converter onSave={handleSaveClick} />
         <ExchangeHistory list={[...history].reverse()} onClear={() => setHistory([])} />
       </Container>
-      <Footer />
+      <Footer /> */}
     </Fragment>
   );
 }
