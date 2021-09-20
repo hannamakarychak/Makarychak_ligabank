@@ -99,23 +99,61 @@
       background-size: 260px 175px;
       background-position: 364px 78px, 448px 34px;
     }
+  }
 
-    .hero__heading {
-      font-size: 46px;
-      line-height: 54px;
-      font-weight: 700;
-      margin: 0 0 7px 0;
+  .hero__heading {
+    font-size: 46px;
+    line-height: 54px;
+    font-weight: 700;
+    margin: 0 0 7px 0;
+  }
+
+  .hero__moto {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .hero__button {
+    font-size: 16px;
+    padding: 9px 36px;
+    min-width: 20.6rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .hero__slider {
+    &--2 {
+      background-position: 63% 50%;
     }
 
-    .hero__moto {
-      font-size: 18px;
-      line-height: 21px;
+    &--3 {
+      background-position: 63% 50%;
     }
+  }
 
-    .hero__button {
-      font-size: 16px;
-      padding: 9px 36px;
-      min-width: 20.6rem;
+  .hero__wrapper {
+    padding: 37px 15px 48px 15px;
+
+    &--main {
+      background-position: 215px 33px, 448px 34px;
     }
+  }
+
+  .hero__heading {
+    font-size: 38px;
+    line-height: 45px;
+  }
+
+  .hero__moto {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 30px;
+    max-width: 20rem;
+  }
+
+  .hero__button {
+    font-size: 14px;
+    min-width: 18.8rem;
+    padding: 3px 20px;
   }
 }

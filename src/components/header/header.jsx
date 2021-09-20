@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useState } from 'react';
 import Burger from '../burger/burger';
 import Container from '../container/container';
@@ -14,7 +15,10 @@ const Header = () => {
       <Container className="header__wrapper">
         <Burger className="header__burger" onClick={() => setIsMenuOpen(!isMenuOpen)} />
         <Logo className="header__logo" />
-        <Navigation className="header__navigation" isMenuOpen={isMenuOpen} />
+        <Navigation
+          className={classNames('header__navigation', { 'header__navigation--open': isMenuOpen })}
+          isMenuOpen={isMenuOpen}
+        />
         <a className="header__login-link" href="/">
           {!isMenuOpen ? (
             <svg
