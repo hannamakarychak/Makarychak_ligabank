@@ -1,0 +1,132 @@
+.offers__item {
+  padding: 40px 70px 60px 70px;
+  background-color: var(--color-light);
+  background-repeat: no-repeat;
+  background-position: 85% 45%;
+  background-size: 37.6% auto;
+  min-height: 400px;
+
+  &--invest {
+    background-image: url('../../img/piggybank.jpg');
+
+    @media only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../../img/piggybank@2x.jpg');
+    }
+  }
+
+  &--loan {
+    background-image: url('../../img/car.jpg');
+
+    @media only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../../img/car@2x.jpg');
+    }
+  }
+
+  &--insurance {
+    background-image: url('../../img/lock.jpg');
+
+    @media only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../../img/lock@2x.jpg');
+    }
+  }
+
+  &--online {
+    background-image: url('../../img/phone.jpg');
+
+    @media only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+      background-image: url('../../img/phone@2x.jpg');
+    }
+  }
+}
+
+.offers__moto {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+
+  padding-bottom: 30px;
+  color: var(--font-color-dark);
+}
+
+.offers__moto,
+.offers__text {
+  width: 40%;
+}
+
+.offers__list {
+  color: var(--font-color-dark);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offers__list-item {
+  position: relative;
+  font-size: 18px;
+  line-height: 23px;
+  margin-bottom: 14px;
+  padding-left: 21px;
+  width: 40%;
+
+  &::before {
+    position: absolute;
+    display: block;
+    width: 11px;
+    height: 9px;
+    content: '';
+    top: 5px;
+    left: 0;
+    background-image: url('../../img/tick.svg');
+    background-repeat: no-repeat;
+  }
+
+  &:last-child {
+    margin-bottom: 38px;
+  }
+}
+
+.offers__button {
+  padding: 8px 30px;
+}
+
+.offers__text {
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.offers__link {
+  color: var(--font-color-dark);
+}
+
+.offers__tab-button {
+  flex: 1 1 auto;
+  padding: 25px 90px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  &:active,
+  &:focus,
+  &:hover,
+  &[data-selected] {
+    background-color: var(--color-light);
+    border-bottom: none;
+  }
+}
+
+[data-reach-tab] {
+  border-bottom: none;
+}
