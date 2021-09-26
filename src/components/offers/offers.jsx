@@ -1,9 +1,26 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import '@reach/tabs/styles.css';
+import { useWindowSize } from '../../hooks/use-window-size/use-window-size';
+import Slider from 'react-slick';
+// import Container from '../container/container';
+// import Button from '../button/button';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import './offers.scss';
 
 const Offers = () => {
+  const size = useWindowSize();
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 4000,
+    appendDots: (dots) => <ul>{dots}</ul>,
+    customPaging: (i) => <div className="ft-slick__dots--custom" />,
+  };
+
   const offers = [
     <div className="offers__item offers__item--invest">
       <div className="offers__moto">Вклады Лига Банка – это выгодная инвестиция в свое будущее</div>
@@ -55,21 +72,25 @@ const Offers = () => {
 
   return (
     <section className="offers">
-      <Tabs>
-        <h2 className="visually-hidden">Предложения</h2>
-        <TabList className="offers__tablist">
-          <Tab className="offers__tab-button offers__tab-button--invest">Вклады</Tab>
-          <Tab className="offers__tab-button">Кредиты</Tab>
-          <Tab className="offers__tab-button">Страхование</Tab>
-          <Tab className="offers__tab-button">Онлайн-сервисы</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>{offers[0]}</TabPanel>
-          <TabPanel>{offers[1]}</TabPanel>
-          <TabPanel>{offers[2]}</TabPanel>
-          <TabPanel>{offers[3]}</TabPanel>
-        </TabPanels>
-      </Tabs>
+      {size.width >= 1024 ? (
+        <Tabs>
+          <h2 className="visually-hidden">Предложения</h2>
+          <TabList className="offers__tablist">
+            <Tab className="offers__tab-button offers__tab-button--invest">Вклады</Tab>
+            {/* to add svg for each button */}
+            <Tab className="offers__tab-button offers__tab-button--loan">Кредиты</Tab>
+            <Tab className="offers__tab-button offers__tab-button--insurance">Страхование</Tab>
+            <Tab className="offers__tab-button offers__tab-button--online">Онлайн-сервисы</Tab>
+          </TabList>
+          <TabPanels>
+            {offers.map((el, index) => (
+              <TabPanel key={el + index}>{el}</TabPanel>
+            ))}
+          </TabPanels>
+        </Tabs>
+      ) : (
+        <Slider {...settings}>{offers}</Slider>
+      )}
     </section>
   );
 };

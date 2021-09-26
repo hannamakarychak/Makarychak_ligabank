@@ -12,7 +12,7 @@ const Hero = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 4000,
     appendDots: (dots) => <ul>{dots}</ul>,
     customPaging: (i) => <div className="ft-slick__dots--custom" />,

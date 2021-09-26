@@ -111,12 +111,33 @@
 }
 
 .offers__tab-button {
+  position: relative;
   flex: 1 1 auto;
-  padding: 25px 90px;
+  padding: 30px 80px 30px 135px;
   background-color: white;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+  background-repeat: no-repeat;
+  background-position: 38% 50%;
+
+  &--invest {
+    background-image: url('../../img/invest.svg');
+  }
+
+  &--loan {
+    background-image: url('../../img/loan.svg');
+  }
+
+  &--insurance {
+    background-position: 35% 50%;
+    background-image: url('../../img/insurance.svg');
+  }
+
+  &--online {
+    background-position: 34% 50%;
+    background-image: url('../../img/online.svg');
+  }
 
   &:active,
   &:focus,
