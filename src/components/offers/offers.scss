@@ -1,5 +1,5 @@
 .offers__item {
-  padding: 40px 70px 60px 70px;
+  padding: 55px 70px 60px 70px;
   background-color: var(--color-light);
   background-repeat: no-repeat;
   background-position: 85% 45%;
@@ -113,7 +113,7 @@
 .offers__tab-button {
   position: relative;
   flex: 1 1 auto;
-  padding: 30px 80px 30px 135px;
+  padding: 36px 80px 36px 135px;
   background-color: white;
   font-weight: 500;
   font-size: 18px;
@@ -150,4 +150,81 @@
 
 [data-reach-tab] {
   border-bottom: none;
+}
+
+@media only screen and (max-width: 1023px) {
+  .offers__item {
+    padding: 55px 45px 60px 45px;
+    background-position: 94.14% 53%;
+
+    &--invest {
+      background-image: url('../../img/piggybank-tablet.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/piggybank-tablet@2x.jpg');
+      }
+    }
+
+    &--loan {
+      background-image: url('../../img/car-tablet.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/car-tablet@2x.jpg');
+      }
+    }
+
+    &--insurance {
+      background-image: url('../../img/lock-tablet.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/lock-tablet@2x.jpg');
+      }
+    }
+
+    &--online {
+      background-image: url('../../img/phone-tablet.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/phone-tablet@2x.jpg');
+      }
+    }
+  }
+
+  .offers__moto {
+    font-size: 18px;
+    line-height: 25px;
+    padding-bottom: 25px;
+  }
+
+  .offers__text {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .offers__moto,
+  .offers__text {
+    width: 50%;
+  }
+
+  .offers__list-item {
+    width: 60%;
+    font-size: 16px;
+    line-height: 21px;
+
+    &:last-child {
+      margin-bottom: 33px;
+    }
+  }
 }
