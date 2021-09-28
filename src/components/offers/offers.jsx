@@ -77,7 +77,6 @@ const Offers = () => {
           <h2 className="visually-hidden">Предложения</h2>
           <TabList className="offers__tablist">
             <Tab className="offers__tab-button offers__tab-button--invest">Вклады</Tab>
-            {/* to add svg for each button */}
             <Tab className="offers__tab-button offers__tab-button--loan">Кредиты</Tab>
             <Tab className="offers__tab-button offers__tab-button--insurance">Страхование</Tab>
             <Tab className="offers__tab-button offers__tab-button--online">Онлайн-сервисы</Tab>

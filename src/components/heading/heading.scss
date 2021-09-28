@@ -1,0 +1,29 @@
+.heading {
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 63px;
+  color: var(--font-color-dark);
+
+  &--secondary {
+    font-size: 41px;
+    line-height: 57px;
+  }
+
+  &--inverted {
+    color: var(--color-light);
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .heading {
+    font-size: 46px;
+    line-height: 54px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .heading {
+    font-size: 38px;
+    line-height: 45px;
+  }
+}
