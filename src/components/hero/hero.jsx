@@ -1,14 +1,14 @@
 import React from 'react';
-import Slider from 'react-slick';
+import SlickSlider from 'react-slick';
 import Container from '../container/container';
 import Button from '../button/button';
+import Heading from '../heading/heading';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import './hero.scss';
-import Heading from '../heading/heading';
 
-const Hero = () => {
+const Slider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -16,14 +16,14 @@ const Hero = () => {
     autoplay: false,
     autoplaySpeed: 4000,
     appendDots: (dots) => <ul>{dots}</ul>,
-    customPaging: (i) => <div className="ft-slick__dots--custom" />,
+    customPaging: (i) => <div className="hero__slider-dots" />,
   };
 
   return (
     <section className="hero">
-      <Slider {...settings}>
-        <div className="hero__slider hero__slider--1">
-          <Container className="hero__wrapper hero__wrapper--main">
+      <SlickSlider {...settings}>
+        <div className="hero__slide hero__slide--loan">
+          <Container className="hero__slide-container hero__slide-container--main">
             <Heading className="hero__heading" inverted>
               Лига Банк
             </Heading>
@@ -33,22 +33,22 @@ const Hero = () => {
             </Button>
           </Container>
         </div>
-        <div className="hero__slider hero__slider--2">
-          <Container className="hero__wrapper hero__wrapper--no-button">
+        <div className="hero__slide hero__slide--security">
+          <Container className="hero__slide-container hero__slide-container--no-button">
             <Heading className="hero__heading">Лига Банк</Heading>
             <div className="hero__moto hero__moto--inverted">Ваша уверенность в завтрашнем дне</div>
           </Container>
         </div>
-        <div className="hero__slider hero__slider--3">
-          <Container className="hero__wrapper">
+        <div className="hero__slide hero__slide--find">
+          <Container className="hero__slide-container">
             <Heading className="hero__heading">Лига Банк</Heading>
             <div className="hero__moto hero__moto--inverted">Всегда рядом</div>
             <Button className="hero__button">Найти отделение</Button>
           </Container>
         </div>
-      </Slider>
+      </SlickSlider>
     </section>
   );
 };
 
-export default Hero;
+export default Slider;

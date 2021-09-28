@@ -4,11 +4,7 @@ import './heading.scss';
 
 const Heading = ({ secondary, children, inverted, className }) => {
   return secondary ? (
-    <h2 className={classNames('heading', { 'heading--inverted': inverted }, className)}>
-      {children}
-    </h2>
-  ) : (
-    <h1
+    <h2
       className={classNames(
         'heading',
         'heading--secondary',
@@ -16,6 +12,10 @@ const Heading = ({ secondary, children, inverted, className }) => {
         className
       )}
     >
+      {children}
+    </h2>
+  ) : (
+    <h1 className={classNames('heading', { 'heading--inverted': inverted }, className)}>
       {children}
     </h1>
   );
