@@ -50,7 +50,7 @@ const Offers = () => {
     <div className="offers__item offers__item--insurance">
       <div className="offers__moto">Лига Страхование — застрахуем все что захотите</div>
       <ul className="offers__list">
-        <li className="offers__list-item">Лига Страхование — застрахуем все что захотите</li>
+        <li className="offers__list-item">Автомобильное страхование</li>
         <li className="offers__list-item">Страхование жизни и здоровья</li>
         <li className="offers__list-item">Страхование недвижимости</li>
       </ul>

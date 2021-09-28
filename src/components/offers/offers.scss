@@ -108,6 +108,7 @@
 
 .offers__link {
   color: var(--font-color-dark);
+  font-weight: 500;
 }
 
 .offers__tab-button {
@@ -225,6 +226,89 @@
 
     &:last-child {
       margin-bottom: 33px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .offers__item {
+    padding: 55px 15px;
+    background-size: 27.19% auto;
+    background-position: 100% 33%;
+
+    &--invest {
+      background-image: url('../../img/piggybank-mobile.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/piggybank-mobile@2x.jpg');
+      }
+    }
+
+    &--loan {
+      background-image: url('../../img/car-mobile.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/car-mobile@2x.jpg');
+      }
+    }
+
+    &--insurance {
+      background-image: url('../../img/lock-mobile.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/lock-mobile@2x.jpg');
+      }
+    }
+
+    &--online {
+      background-image: url('../../img/phone-mobile.jpg');
+
+      @media only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../../img/phone-mobile@2x.jpg');
+      }
+    }
+  }
+
+  .offers__moto {
+    font-size: 16px;
+    line-height: 22px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .offers__text {
+    font-size: 14px;
+    line-height: 18px;
+    width: 80%;
+  }
+
+  .offers__button {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 13px 30px;
+    width: 100%;
+  }
+
+  .offers__list-item {
+    width: 80%;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 9px;
+
+    &:last-child {
+      margin-bottom: 27px;
     }
   }
 }
