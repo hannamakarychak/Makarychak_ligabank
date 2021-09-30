@@ -8,6 +8,9 @@ import './numeric-input.scss';
 const NumericInput = ({ className }) => {
   const [price, setPrice] = useState(2000000);
   const [isInvalid, setIsInvalid] = useState(false);
+  console.log(price);
+
+  const handlePriceChange = (e) => setPrice(e.target.value);
 
   useEffect(() => {
     const newPrice = parseInt(price, 10);
@@ -19,14 +22,8 @@ const NumericInput = ({ className }) => {
       <button onClick={() => setPrice(price - 100000)} className="numeric-input__button">
         -
       </button>
-
-      <input
-        className="numeric-input__field"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
+      <input className="numeric-input__field" value={price} onChange={handlePriceChange} />
       <span className="numeric-input__text">рублей</span>
-
       <button onClick={() => setPrice(price + 100000)} className="numeric-input__button">
         +
       </button>

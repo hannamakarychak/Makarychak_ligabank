@@ -10,8 +10,6 @@ const Form = () => {
   const [goal, setGoal] = useState();
   const [price, setPrice] = useState(2000000);
 
-  const handleInputChange = (e) => setPrice(e.target.value);
-
   return (
     <form
       className="form"
@@ -42,12 +40,7 @@ const Form = () => {
         </Listbox>
         <h3 className="form__heading">Шаг 2. Введите параметры кредита</h3>
         <span className="form__label">Стоимость недвижимости</span>
-        <NumericInput
-          className="form__price-selector"
-          onChange={() => handleInputChange}
-          setPrice={setPrice}
-          price={price}
-        />
+        <NumericInput className="form__price-selector" onChange={(price) => console.log(price)} />
         <div className="form__description">От 1 200 000 до 25 000 000 рублей</div>
         <span className="form__label">Первоначальный взнос</span>
         <InputRange price={price} onChange={(payment) => console.log(payment)} />
