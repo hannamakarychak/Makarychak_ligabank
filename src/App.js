@@ -6,6 +6,7 @@ import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Hero from './components/hero/hero';
 import Offers from './components/offers/offers';
+import Calculator from './components/calculator/calculator';
 
 function App() {
   const [history, setHistory] = useState([]);
@@ -26,6 +27,7 @@ function App() {
       <Header />
       <Hero />
       <Offers />
+      <Calculator />
       {/* <Container>
         <Converter onSave={handleSaveClick} />
         <ExchangeHistory list={[...history].reverse()} onClear={() => setHistory([])} />

@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import './offers.scss';
+import Container from '../container/container';
 
 const Offers = () => {
   const size = useWindowSize();
@@ -72,24 +73,26 @@ const Offers = () => {
 
   return (
     <section className="offers">
-      {size.width >= 1024 ? (
-        <Tabs>
-          <h2 className="visually-hidden">Предложения</h2>
-          <TabList className="offers__tablist">
-            <Tab className="offers__tab-button offers__tab-button--invest">Вклады</Tab>
-            <Tab className="offers__tab-button offers__tab-button--loan">Кредиты</Tab>
-            <Tab className="offers__tab-button offers__tab-button--insurance">Страхование</Tab>
-            <Tab className="offers__tab-button offers__tab-button--online">Онлайн-сервисы</Tab>
-          </TabList>
-          <TabPanels>
-            {offers.map((el, index) => (
-              <TabPanel key={el + index}>{el}</TabPanel>
-            ))}
-          </TabPanels>
-        </Tabs>
-      ) : (
-        <Slider {...settings}>{offers}</Slider>
-      )}
+      <Container>
+        {size.width >= 1024 ? (
+          <Tabs>
+            <h2 className="visually-hidden">Предложения</h2>
+            <TabList className="offers__tablist">
+              <Tab className="offers__tab-button offers__tab-button--invest">Вклады</Tab>
+              <Tab className="offers__tab-button offers__tab-button--loan">Кредиты</Tab>
+              <Tab className="offers__tab-button offers__tab-button--insurance">Страхование</Tab>
+              <Tab className="offers__tab-button offers__tab-button--online">Онлайн-сервисы</Tab>
+            </TabList>
+            <TabPanels>
+              {offers.map((el, index) => (
+                <TabPanel key={el + index}>{el}</TabPanel>
+              ))}
+            </TabPanels>
+          </Tabs>
+        ) : (
+          <Slider {...settings}>{offers}</Slider>
+        )}
+      </Container>
     </section>
   );
 };

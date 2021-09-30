@@ -1,0 +1,41 @@
+.numeric-input {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 12px 0 7px;
+  border: 1px solid var(--font-color-dark);
+  border-radius: 4px;
+}
+
+.numeric-input__field {
+  -moz-appearance: textfield;
+  border: none;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 5px;
+  width: 50%;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+.numeric-input__field,
+.numeric-input__text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--font-color-dark);
+}
+
+.numeric-input__text {
+  margin-right: auto;
+  width: 50%;
+}
+
+.numeric-input__button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
