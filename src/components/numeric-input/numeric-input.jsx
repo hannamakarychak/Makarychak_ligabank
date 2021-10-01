@@ -5,12 +5,15 @@ import './numeric-input.scss';
 
 // const INVALID_PRICE = 'Некорректное значение';
 
-const NumericInput = ({ className }) => {
+const NumericInput = ({ className, onChange }) => {
   const [price, setPrice] = useState(2000000);
   const [isInvalid, setIsInvalid] = useState(false);
-  console.log(price);
+  console.log({ price: price });
 
-  const handlePriceChange = (e) => setPrice(e.target.value);
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+    onChange(price);
+  };
 
   useEffect(() => {
     const newPrice = parseInt(price, 10);
