@@ -113,7 +113,8 @@
 
 .offers__tab-button {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
+  max-width: 25%;
   padding: 36px 80px 36px 135px;
   background-color: white;
   font-weight: 500;

@@ -64,11 +64,37 @@ const Form = () => {
         <div className="form__description">От 1 200 000 до 25 000 000 рублей</div>
         <span className="form__label">Первоначальный взнос</span>
         <InputRange
+          className="form__input"
           value={initialPayment}
           percentage={initialPaymentPercentage}
           onChange={handleChangeInitialPayment}
           onPercentageChange={handleChangeInitialPaymentPercentage}
         />
+
+        <input type="checkbox" value="assets" id="assets" className="form__checkbox" />
+        <label htmlFor="assets" className="form__checkbox-label">
+          Использовать материнский капитал
+        </label>
+      </div>
+      <div className="form__col">
+        <div className="form__offer">
+          <h4 className="form__offer-heading">Наше предложение</h4>
+          <div className="form__offer-container">
+            <div>
+              <div className="form__offer-value">1 330 000 рублей</div>
+              <div className="form__offer-description">Сумма ипотеки</div>
+              <div className="form__offer-value">27 868 рублей</div>
+              <div className="form__offer-description">Ежемесячный платеж</div>
+            </div>
+            <div>
+              <div className="form__offer-value">9,40%</div>
+              <div className="form__offer-description">Процентная ставка</div>
+              <div className="form__offer-value">61 929 рублей</div>
+              <div className="form__offer-description">Необходимый доход</div>
+            </div>
+          </div>
+          <button className="form__offer-submit button">Оформить заявку</button>
+        </div>
       </div>
     </form>
   );

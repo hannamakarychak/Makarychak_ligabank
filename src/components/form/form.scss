@@ -1,5 +1,14 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
 .form__col {
   width: 51.3%;
+
+  &:first-child {
+    margin-right: 7rem;
+  }
 }
 
 .form__heading {
@@ -47,4 +56,49 @@
   line-height: 20px;
   margin-bottom: 24px;
   color: var(--color-medium-dark);
+}
+
+.form__input {
+  margin-bottom: 27px;
+}
+
+.form__checkbox {
+  margin: 0 8px 0 0;
+}
+
+.form__offer {
+  background-color: var(--color-light);
+  padding: 60px;
+}
+
+.form__offer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__offer-value,
+.form__offer-heading {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+  color: var(--font-color-dark);
+}
+
+.form__offer-heading,
+.form__offer-description {
+  margin: 0 0 31px 0;
+}
+
+.form__offer-value {
+  margin-bottom: 6px;
+}
+
+.form__offer-description {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--grey-light);
+}
+
+.form__offer-submit {
+  width: 100%;
 }

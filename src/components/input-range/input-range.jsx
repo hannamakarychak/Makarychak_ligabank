@@ -7,8 +7,8 @@ import './input-range.scss';
 
 const InputRange = ({ value, percentage, className, onChange, onPercentageChange }) => {
   return (
-    <Fragment>
-      <div className={classNames(className, 'input-range')}>
+    <div className={className}>
+      <div className="input-range">
         <input
           type="number"
           className="input-range__field"
@@ -23,7 +23,8 @@ const InputRange = ({ value, percentage, className, onChange, onPercentageChange
           <SliderHandle />
         </SliderTrack>
       </SliderInput>
-    </Fragment>
+      <div className="input-range__percentage">{percentage}</div>
+    </div>
   );
 };
 
