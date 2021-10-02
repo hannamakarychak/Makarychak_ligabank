@@ -6,9 +6,29 @@ import './form.scss';
 import NumericInput from '../numeric-input/numeric-input';
 import InputRange from '../input-range/input-range';
 
+const DEFAULT_PERCENTAGE = 10;
+
 const Form = () => {
   const [goal, setGoal] = useState();
   const [price, setPrice] = useState(2000000);
+  const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(DEFAULT_PERCENTAGE);
+  const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
+
+  const handleChangePrice = (newPrice) => {
+    setPrice(newPrice);
+    setInitialPayment((newPrice * DEFAULT_PERCENTAGE) / 100);
+    setInitialPaymentPercentage(DEFAULT_PERCENTAGE);
+  };
+
+  const handleChangeInitialPayment = (newInitialPayment) => {
+    setInitialPayment(newInitialPayment);
+    setInitialPaymentPercentage((newInitialPayment / price) * 100);
+  };
+
+  const handleChangeInitialPaymentPercentage = (newPercentage) => {
+    setInitialPaymentPercentage(newPercentage);
+    setInitialPayment(Math.round((newPercentage * price) / 100));
+  };
 
   return (
     <form
@@ -40,10 +60,15 @@ const Form = () => {
         </Listbox>
         <h3 className="form__heading">Шаг 2. Введите параметры кредита</h3>
         <span className="form__label">Стоимость недвижимости</span>
-        <NumericInput className="form__price-selector" onChange={setPrice} />
+        <NumericInput className="form__price-selector" value={price} onChange={handleChangePrice} />
         <div className="form__description">От 1 200 000 до 25 000 000 рублей</div>
         <span className="form__label">Первоначальный взнос</span>
-        <InputRange price={price} onChange={(payment) => console.log(payment)} />
+        <InputRange
+          value={initialPayment}
+          percentage={initialPaymentPercentage}
+          onChange={handleChangeInitialPayment}
+          onPercentageChange={handleChangeInitialPaymentPercentage}
+        />
       </div>
     </form>
   );

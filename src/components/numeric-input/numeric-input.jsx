@@ -1,33 +1,30 @@
 import classNames from 'classnames';
-import { Fragment, useEffect, useState } from 'react';
 
 import './numeric-input.scss';
 
 // const INVALID_PRICE = 'Некорректное значение';
 
-const NumericInput = ({ className, onChange }) => {
-  const [price, setPrice] = useState(2000000);
-  const [isInvalid, setIsInvalid] = useState(false);
-  console.log({ price: price });
+const NumericInput = ({ value, className, onChange }) => {
+  // const [isInvalid, setIsInvalid] = useState(false);
 
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-    onChange(price);
-  };
-
-  useEffect(() => {
-    const newPrice = parseInt(price, 10);
-    setIsInvalid(isNaN(newPrice) || newPrice < 1200000 || newPrice > 25000000);
-  }, [price]);
+  // useEffect(() => {
+  //   const newPrice = parseInt(price, 10);
+  //   setIsInvalid(isNaN(newPrice) || newPrice < 1200000 || newPrice > 25000000);
+  // }, [price]);
 
   return (
     <div className={classNames(className, 'numeric-input')}>
-      <button onClick={() => setPrice(price - 100000)} className="numeric-input__button">
+      <button onClick={() => onChange(value - 100000)} className="numeric-input__button">
         -
       </button>
-      <input className="numeric-input__field" value={price} onChange={handlePriceChange} />
+      <input
+        className="numeric-input__field"
+        value={value}
+        type="number"
+        onChange={(e) => onChange(parseInt(e.target.value, 10))}
+      />
       <span className="numeric-input__text">рублей</span>
-      <button onClick={() => setPrice(price + 100000)} className="numeric-input__button">
+      <button onClick={() => onChange(value + 100000)} className="numeric-input__button">
         +
       </button>
     </div>
