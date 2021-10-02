@@ -1,4 +1,17 @@
 .map {
   width: 100%;
   height: 46.2rem;
+  margin-bottom: 110px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .map {
+    margin-bottom: 80px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .map {
+    margin-bottom: 60px;
+  }
 }

@@ -22,8 +22,7 @@
   font-weight: 500;
   font-size: 22px;
   line-height: 31px;
-  margin: 0;
-  margin-bottom: 26px;
+  margin: 35px 0 26px 0;
   color: var(--font-color-dark);
 
   &--application {
@@ -116,6 +115,7 @@
 .form__application {
   background-color: var(--color-light);
   padding: 40px 70px 40px 70px;
+  margin-top: 70px;
 }
 
 .form__row {
@@ -194,7 +194,8 @@
 
   .form__application {
     background-color: white;
-    padding: 30px 0 30px 0;
+    padding: 30px 0 0 0;
+    margin-top: 0;
   }
 
   .form__heading {
@@ -218,7 +219,7 @@
 @media only screen and (max-width: 767px) {
   .form__offer {
     margin-top: 26px;
-    padding: 31px 15px;
+    padding: 11px 15px 40px 15px;
   }
 
   .form__offer-container {
@@ -231,7 +232,7 @@
   }
 
   .form__text {
-    margin: 0 0 21px 0;
+    margin: 0 0 18px 0;
   }
 
   .form__value {
@@ -246,6 +247,7 @@
   .form__heading {
     font-size: 18px;
     line-height: 25px;
+    margin: 23px 0 14px 0;
 
     &--application {
       margin: 11px auto 16px auto;

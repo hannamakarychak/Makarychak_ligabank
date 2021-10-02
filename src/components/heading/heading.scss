@@ -7,6 +7,7 @@
   &--secondary {
     font-size: 41px;
     line-height: 57px;
+    margin: 100px 0 60px 0;
     color: var(--font-color-dark);
   }
 
@@ -23,6 +24,7 @@
     &--secondary {
       font-size: 32px;
       line-height: 140%;
+      margin: 73px 0 39px 0;
     }
   }
 }
@@ -31,5 +33,11 @@
   .heading {
     font-size: 38px;
     line-height: 45px;
+
+    &--secondary {
+      font-size: 22px;
+      line-height: 31px;
+      margin: 55px 0 30px 0;
+    }
   }
 }

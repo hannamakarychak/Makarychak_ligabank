@@ -34,7 +34,8 @@ function App() {
         <Converter onSave={handleSaveClick} />
         <ExchangeHistory list={[...history].reverse()} onClear={() => setHistory([])} />
       </Container>
-      <Footer /> */}
+     */}
+      <Footer />
     </Fragment>
   );
 }
