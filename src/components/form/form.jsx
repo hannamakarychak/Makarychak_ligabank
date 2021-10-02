@@ -80,13 +80,13 @@ const Form = () => {
         <div className="form__offer">
           <h4 className="form__offer-heading">Наше предложение</h4>
           <div className="form__offer-container">
-            <div>
+            <div className="form__offer-col">
               <div className="form__offer-value">1 330 000 рублей</div>
               <div className="form__offer-description">Сумма ипотеки</div>
               <div className="form__offer-value">27 868 рублей</div>
               <div className="form__offer-description">Ежемесячный платеж</div>
             </div>
-            <div>
+            <div className="form__offer-col">
               <div className="form__offer-value">9,40%</div>
               <div className="form__offer-description">Процентная ставка</div>
               <div className="form__offer-value">61 929 рублей</div>

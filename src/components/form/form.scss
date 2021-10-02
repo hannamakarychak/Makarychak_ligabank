@@ -102,3 +102,63 @@
 .form__offer-submit {
   width: 100%;
 }
+
+@media only screen and (max-width: 1023px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .form__col {
+    width: 100%;
+
+    &:first-child {
+      margin-right: 0;
+    }
+  }
+
+  .form__offer {
+    margin-top: 36px;
+  }
+
+  .form__offer-container {
+    justify-content: flex-start;
+  }
+
+  .form__offer-col {
+    margin-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form__offer {
+    margin-top: 26px;
+    padding: 31px 15px;
+  }
+
+  .form__offer-container {
+    flex-direction: column;
+  }
+
+  .form__offer-heading,
+  .form__offer-value {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .form__offer-heading {
+    margin: 0 0 26px 0;
+  }
+
+  .form__offer-description {
+    margin: 0 0 21px 0;
+  }
+
+  .form__offer-value {
+    margin-bottom: 0;
+  }
+
+  .form__offer-submit {
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
