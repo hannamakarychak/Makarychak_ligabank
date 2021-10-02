@@ -155,6 +155,9 @@
 }
 
 @media only screen and (max-width: 1023px) {
+  .offers {
+    background-color: var(--color-light);
+  }
   .offers__item {
     padding: 55px 45px 60px 45px;
     background-position: 94.14% 53%;

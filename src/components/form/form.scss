@@ -198,6 +198,8 @@
   }
 
   .form__heading {
+    margin-bottom: 18px;
+    margin-top: 36px;
     width: 100%;
   }
 
@@ -236,8 +238,40 @@
     margin-bottom: 0;
   }
 
-  .form__submit {
+  .form__submit,
+  .font__button {
     font-size: 14px;
-    line-height: 28px;
+  }
+
+  .form__heading {
+    font-size: 18px;
+    line-height: 25px;
+
+    &--application {
+      margin: 11px auto 16px auto;
+    }
+  }
+
+  .form__row {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .form__application-value {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .form__application-text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .form__application-input {
+    padding: 16px;
+    &--half {
+      width: 100%;
+    }
   }
 }
