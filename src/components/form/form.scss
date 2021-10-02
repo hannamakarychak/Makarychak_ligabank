@@ -1,13 +1,19 @@
 .form {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .form__col {
-  width: 51.3%;
+  width: 46.3%;
 
   &:first-child {
     margin-right: 7rem;
+  }
+
+  &:last-child {
+    margin: 0 auto;
+    width: 66%;
   }
 }
 
@@ -16,8 +22,14 @@
   font-weight: 500;
   font-size: 22px;
   line-height: 31px;
+  margin: 0;
   margin-bottom: 26px;
   color: var(--font-color-dark);
+
+  &--application {
+    width: 54%;
+    margin: 21px auto 16px auto;
+  }
 }
 
 .form__listbox {
@@ -68,7 +80,7 @@
 
 .form__offer {
   background-color: var(--color-light);
-  padding: 60px;
+  padding: 30px 60px 60px 60px;
 }
 
 .form__offer-container {
@@ -76,30 +88,28 @@
   justify-content: space-between;
 }
 
-.form__offer-value,
-.form__offer-heading {
+.form__value {
   font-weight: 500;
   font-size: 22px;
   line-height: 31px;
   color: var(--font-color-dark);
 }
 
-.form__offer-heading,
-.form__offer-description {
+.form__text {
   margin: 0 0 31px 0;
 }
 
-.form__offer-value {
+.form__value {
   margin-bottom: 6px;
 }
 
-.form__offer-description {
+.form__text {
   font-size: 16px;
   line-height: 22px;
   color: var(--grey-light);
 }
 
-.form__offer-submit {
+.form__submit {
   width: 100%;
 }
 
@@ -139,26 +149,71 @@
     flex-direction: column;
   }
 
-  .form__offer-heading,
-  .form__offer-value {
+  .form__value {
     font-size: 18px;
     line-height: 25px;
   }
 
-  .form__offer-heading {
-    margin: 0 0 26px 0;
-  }
-
-  .form__offer-description {
+  .form__text {
     margin: 0 0 21px 0;
   }
 
-  .form__offer-value {
+  .form__value {
     margin-bottom: 0;
   }
 
-  .form__offer-submit {
+  .form__submit {
     font-size: 14px;
     line-height: 28px;
   }
+}
+
+.form__application {
+  background-color: var(--color-light);
+  padding: 40px 70px 40px 70px;
+}
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.form__application-text {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--grey-light);
+}
+
+.form__application-value {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.form__application-input {
+  width: 100%;
+  font-size: 18px;
+  line-height: 25px;
+  padding: 20px;
+  margin: 30px 0 30px 0;
+  border-radius: 4px;
+  border: 1px solid #0a1e32;
+  background-color: inherit;
+
+  &--half {
+    width: 47%;
+    margin-top: 0;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+
+.form__button {
+  min-width: 37%;
+  margin: 0 auto;
 }

@@ -78,22 +78,61 @@ const Form = () => {
       </div>
       <div className="form__col">
         <div className="form__offer">
-          <h4 className="form__offer-heading">Наше предложение</h4>
+          <h4 className="form__heading">Наше предложение</h4>
           <div className="form__offer-container">
             <div className="form__offer-col">
-              <div className="form__offer-value">1 330 000 рублей</div>
-              <div className="form__offer-description">Сумма ипотеки</div>
-              <div className="form__offer-value">27 868 рублей</div>
-              <div className="form__offer-description">Ежемесячный платеж</div>
+              <div className="form__value">1 330 000 рублей</div>
+              <div className="form__text">Сумма ипотеки</div>
+              <div className="form__value">27 868 рублей</div>
+              <div className="form__text">Ежемесячный платеж</div>
             </div>
             <div className="form__offer-col">
-              <div className="form__offer-value">9,40%</div>
-              <div className="form__offer-description">Процентная ставка</div>
-              <div className="form__offer-value">61 929 рублей</div>
-              <div className="form__offer-description">Необходимый доход</div>
+              <div className="form__value">9,40%</div>
+              <div className="form__text">Процентная ставка</div>
+              <div className="form__value">61 929 рублей</div>
+              <div className="form__text">Необходимый доход</div>
             </div>
           </div>
-          <button className="form__offer-submit button">Оформить заявку</button>
+          <button className="form__submit button">Оформить заявку</button>
+        </div>
+      </div>
+      <div className="form__col">
+        <div className="form__application">
+          <h3 className="form__heading form__heading--application">Шаг 3. Оформление заявки</h3>
+          <div className="form__row">
+            <span className="form__application-text">Номер заявки</span>
+            <span className="form__application-value">№ 0010</span>
+          </div>
+          <div className="form__row">
+            <span className="form__application-text">Цель кредита</span>
+            <span className="form__application-value">Ипотека</span>
+          </div>
+          <div className="form__row">
+            <span className="form__application-text">Стоимость недвижимости</span>
+            <span className="form__application-value">2 000 000 рублей</span>
+          </div>
+          <div className="form__row">
+            <span className="form__application-text">Первоначальный взнос</span>
+            <span className="form__application-value">200 000 рублей</span>
+          </div>
+          <div className="form__row">
+            <span className="form__application-text">Срок кредитования</span>
+            <span className="form__application-value">5 лет</span>
+          </div>
+          <div>
+            <input className="form__application-input" id="name" placeholder="ФИО" />
+            <input
+              className="form__application-input form__application-input--half"
+              id="tel"
+              placeholder="Телефон"
+            />
+            <input
+              className="form__application-input form__application-input--half"
+              id="email"
+              placeholder="E-mail"
+            />
+          </div>
+          <button className="form__button button">Отправить</button>
         </div>
       </div>
     </form>
