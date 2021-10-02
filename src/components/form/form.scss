@@ -113,61 +113,6 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 1023px) {
-  .form {
-    flex-direction: column;
-  }
-
-  .form__col {
-    width: 100%;
-
-    &:first-child {
-      margin-right: 0;
-    }
-  }
-
-  .form__offer {
-    margin-top: 36px;
-  }
-
-  .form__offer-container {
-    justify-content: flex-start;
-  }
-
-  .form__offer-col {
-    margin-right: 50px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .form__offer {
-    margin-top: 26px;
-    padding: 31px 15px;
-  }
-
-  .form__offer-container {
-    flex-direction: column;
-  }
-
-  .form__value {
-    font-size: 18px;
-    line-height: 25px;
-  }
-
-  .form__text {
-    margin: 0 0 21px 0;
-  }
-
-  .form__value {
-    margin-bottom: 0;
-  }
-
-  .form__submit {
-    font-size: 14px;
-    line-height: 28px;
-  }
-}
-
 .form__application {
   background-color: var(--color-light);
   padding: 40px 70px 40px 70px;
@@ -204,7 +149,7 @@
   background-color: inherit;
 
   &--half {
-    width: 47%;
+    width: 47.5%;
     margin-top: 0;
 
     &:not(:last-child) {
@@ -216,4 +161,83 @@
 .form__button {
   min-width: 37%;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1023px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .form__col {
+    width: 100%;
+
+    &:first-child {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+
+  .form__offer {
+    margin-top: 36px;
+  }
+
+  .form__offer-container {
+    justify-content: flex-start;
+  }
+
+  .form__offer-col {
+    margin-right: 50px;
+  }
+
+  .form__application {
+    background-color: white;
+    padding: 30px 0 30px 0;
+  }
+
+  .form__heading {
+    width: 100%;
+  }
+
+  .form__button {
+    width: 100%;
+  }
+
+  .form__application-input {
+    &--half {
+      width: 47.7%;
+      margin-top: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form__offer {
+    margin-top: 26px;
+    padding: 31px 15px;
+  }
+
+  .form__offer-container {
+    flex-direction: column;
+  }
+
+  .form__value {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .form__text {
+    margin: 0 0 21px 0;
+  }
+
+  .form__value {
+    margin-bottom: 0;
+  }
+
+  .form__submit {
+    font-size: 14px;
+    line-height: 28px;
+  }
 }
