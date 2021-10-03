@@ -16,6 +16,7 @@ const Form = () => {
   const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(DEFAULT_PERCENTAGE);
   const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
   const [isUserFormVisible, setIsUserFormVisible] = useState(false);
+  const [loanPeriod, setLoanPeriod] = useState(5);
 
   const isGoalSelected = goal !== 'default';
   const isFinalOfferVisible = isGoalSelected && true;
@@ -43,12 +44,21 @@ const Form = () => {
   };
 
   const handleValidateInitialPayment = () => {
-    const isInitialPaymentValid = initialPayment / price >= 0.1 && initialPayment / price <= 1;
+    const isInitialPaymentValid = initialPayment / price >= 0.1;
     if (isInitialPaymentValid) {
       return;
     }
 
     handleChangeInitialPayment((price * DEFAULT_PERCENTAGE) / 100);
+  };
+
+  const handleValidateLoanPeriod = () => {
+    const isLoanPeriodValid = !isNaN(parseInt(loanPeriod, 10));
+    if (!isLoanPeriodValid || loanPeriod < 5) {
+      setLoanPeriod(5);
+    } else if (loanPeriod > 30) {
+      setLoanPeriod(30);
+    }
   };
 
   return (
@@ -98,11 +108,32 @@ const Form = () => {
               <InputRange
                 className="form__input"
                 value={initialPayment}
-                percentage={initialPaymentPercentage}
+                rangeValue={initialPaymentPercentage}
                 isValid={isPriceValid}
+                unit="рублей"
+                leftSign={`${Math.round(initialPaymentPercentage)}%`}
+                min={10}
+                max={100}
+                step={5}
                 onChange={handleChangeInitialPayment}
-                onPercentageChange={handleChangeInitialPaymentPercentage}
+                onRangeValueChange={handleChangeInitialPaymentPercentage}
                 onBlur={handleValidateInitialPayment}
+              />
+
+              <InputRange
+                className="form__input"
+                value={loanPeriod}
+                rangeValue={loanPeriod}
+                isValid={isPriceValid}
+                unit="лет"
+                leftSign="5 лет"
+                rightSign="30 лет"
+                min={5}
+                max={30}
+                step={1}
+                onChange={setLoanPeriod}
+                onRangeValueChange={setLoanPeriod}
+                onBlur={handleValidateLoanPeriod}
               />
 
               <input type="checkbox" value="assets" id="assets" className="form__checkbox" />

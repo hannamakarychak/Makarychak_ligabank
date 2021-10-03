@@ -3,7 +3,20 @@ import { SliderInput, SliderTrack, SliderRange, SliderHandle } from '@reach/slid
 import '@reach/slider/styles.css';
 import './input-range.scss';
 
-const InputRange = ({ value, percentage, className, onChange, onPercentageChange, onBlur }) => {
+const InputRange = ({
+  value,
+  rangeValue,
+  className,
+  onChange,
+  onRangeValueChange,
+  onBlur,
+  unit,
+  leftSign,
+  rightSign,
+  step,
+  min,
+  max,
+}) => {
   return (
     <div
       className={className}
@@ -26,17 +39,26 @@ const InputRange = ({ value, percentage, className, onChange, onPercentageChange
           type="number"
           className="input-range__field"
           value={value}
-          onChange={(e) => onChange(parseInt(e.target.value, 10))}
+          onChange={(e) => onChange(e.target.value)}
         />
-        <span className="input-range__text">рублей</span>
+        <span className="input-range__text">{unit}</span>
       </div>
-      <SliderInput min={10} max={100} step={5} onChange={onPercentageChange} value={percentage}>
+      <SliderInput
+        min={min}
+        max={max}
+        step={step}
+        onChange={onRangeValueChange}
+        value={parseInt(rangeValue, 10)}
+      >
         <SliderTrack>
           <SliderRange />
           <SliderHandle />
         </SliderTrack>
       </SliderInput>
-      <div className="input-range__percentage">{Math.round(percentage)}</div>
+      <div className="input-range__description">
+        <span>{leftSign}</span>
+        <span>{rightSign}</span>
+      </div>
     </div>
   );
 };
