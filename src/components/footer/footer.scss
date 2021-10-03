@@ -2,54 +2,87 @@
   padding: 50px 0 50px 0;
   margin-top: 110px;
   background-color: var(--color-light);
+}
 
-  &__logo {
-    margin-bottom: 18px;
+.footer__logo {
+  margin-bottom: 18px;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__address {
+  max-width: 252px;
+  margin-right: 16px;
+}
+
+.footer__contacts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__phone {
+  max-width: 200px;
+  margin: 0 16px;
+  display: flex;
+}
+
+.footer__phone-icon {
+  margin-right: 19px;
+  flex: 0 0 auto;
+}
+
+.footer__text {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-medium-dark);
+  margin: 8px 0 0 0;
+}
+
+.footer__phone-number {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--font-color-dark);
+}
+
+.footer__socials-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 16px;
+}
+
+.footer__socials-item:not(:last-child) {
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .footer__contacts {
+    display: block;
   }
 
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
+  .footer__phone {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .footer__wrapper {
+    display: block;
   }
 
-  &__address {
-    max-width: 252px;
-    margin-right: 16px;
+  .footer__text--copyright {
+    display: none;
   }
 
-  &__contacts {
-    max-width: 200px;
-    margin: 0 16px;
-    display: flex;
+  .footer__phone {
+    margin: 30px 0 0;
   }
 
-  &__contacts-icon {
-    margin-right: 19px;
-    flex: 0 0 auto;
-  }
-
-  &__text {
-    font-size: 12px;
-    line-height: 18px;
-    color: var(--color-medium-dark);
-    margin: 8px 0 0 0;
-  }
-
-  &__contact-number {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--font-color-dark);
-  }
-
-  &__socials-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  &__socials-item:not(:last-child) {
-    margin-right: 15px;
+  .footer__socials-list {
+    margin: 30px 0 0;
   }
 }

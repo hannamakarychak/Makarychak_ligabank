@@ -1,14 +1,14 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
-import '@reach/tabs/styles.css';
-import { useWindowSize } from '../../hooks/use-window-size/use-window-size';
 import Slider from 'react-slick';
-// import Container from '../container/container';
-// import Button from '../button/button';
+
+import { useWindowSize } from '../../hooks/use-window-size/use-window-size';
+import Container from '../container/container';
+import { BREAKPOINTS } from '../../constants';
+
+import '@reach/tabs/styles.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import './offers.scss';
-import Container from '../container/container';
 
 const Offers = () => {
   const size = useWindowSize();
@@ -74,7 +74,7 @@ const Offers = () => {
   return (
     <section className="offers">
       <Container>
-        {size.width >= 1024 ? (
+        {size.width >= BREAKPOINTS.Desktop ? (
           <Tabs>
             <h2 className="visually-hidden">Предложения</h2>
             <TabList className="offers__tablist">
