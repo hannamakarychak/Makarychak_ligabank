@@ -29,6 +29,8 @@
 }
 
 .login-popup__input {
+  width: 100%;
+  display: block;
   font-size: 20px;
   border-radius: 4px;
   padding: 18px;
@@ -44,11 +46,6 @@
   }
 }
 
-.login-popup__input {
-  width: 100%;
-  display: block;
-}
-
 .login-popup__forget {
   align-self: flex-end;
   justify-self: flex-end;
@@ -61,4 +58,39 @@
 .login-popup__submit {
   margin-top: 30px;
   padding: 12px 20px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .login-popup[data-reach-dialog-content] {
+    padding: 60px 80px;
+    width: 88%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login-popup[data-reach-dialog-content] {
+    padding: 45px 20px;
+    width: 91%;
+  }
+
+  .login-popup__top {
+    margin-bottom: 30px;
+  }
+
+  .login-popup__forget {
+    align-self: center;
+    order: 5;
+  }
+
+  .login-popup__submit {
+    margin-bottom: 10px;
+  }
+
+  .login-popup__input {
+    padding: 13px;
+  }
+
+  .login-popup__submit {
+    padding: 8px;
+  }
 }
