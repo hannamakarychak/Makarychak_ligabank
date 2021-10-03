@@ -1,0 +1,64 @@
+.login-popup[data-reach-dialog-content] {
+  padding: 60px;
+  background-color: var(--color-light);
+}
+
+.login-popup__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.login-popup__close {
+  border: none;
+  background-color: transparent;
+}
+
+.login-popup__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-popup__label {
+  display: block;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 5px;
+  color: var(--grey-light);
+}
+
+.login-popup__input {
+  font-size: 20px;
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 25px;
+  background-color: inherit;
+  border: 1px solid var(--font-color-dark);
+
+  &--password {
+    margin-bottom: 7px;
+    background-image: url('../../img/eye.svg');
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+  }
+}
+
+.login-popup__input {
+  width: 100%;
+  display: block;
+}
+
+.login-popup__forget {
+  align-self: flex-end;
+  justify-self: flex-end;
+  font-size: 12px;
+  line-height: 17px;
+  text-decoration: none;
+  color: var(--color-medium-dark);
+}
+
+.login-popup__submit {
+  margin-top: 30px;
+  padding: 12px 20px;
+}

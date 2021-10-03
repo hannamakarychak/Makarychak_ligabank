@@ -1,17 +1,26 @@
 .logo {
   display: flex;
   align-items: center;
+}
 
-  &__icon {
-    margin-right: 9px;
-  }
+.logo__icon {
+  margin-right: 9px;
+}
+
+.logo__text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo__moto {
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--font-color-dark);
 }
 
 @media only screen and (max-width: 1023px) {
-  .logo {
-    &__icon {
-      margin-right: 9px;
-    }
+  .logo__icon {
+    margin-right: 9px;
   }
 }
 

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import Burger from '../burger/burger';
 import Container from '../container/container';
+import LoginPopup from '../login-popup/login-popup';
 import Logo from '../logo/logo';
 import Navigation from '../navigation/navigation';
 
@@ -9,6 +10,16 @@ import './header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+
+  const handleOpenLoginPopup = () => {
+    setIsLoginPopupOpen(true);
+  };
+
+  const handleCloseLoginPopup = () => {
+    setIsLoginPopupOpen(false);
+  };
 
   return (
     <header className="header">
@@ -19,7 +30,7 @@ const Header = () => {
           className={classNames('header__navigation', { 'header__navigation--open': isMenuOpen })}
           isMenuOpen={isMenuOpen}
         />
-        <a className="header__login-link" href="/">
+        <button className="header__login-link" onClick={handleOpenLoginPopup}>
           {!isMenuOpen ? (
             <svg
               className="header__login-icon"
@@ -42,9 +53,10 @@ const Header = () => {
             </svg>
           )}
 
-          <span className="header__login-text"> Войти в Интернет-банк</span>
-        </a>
+          <span className="header__login-text">Войти в Интернет-банк</span>
+        </button>
       </Container>
+      <LoginPopup isOpen={isLoginPopupOpen} onClose={handleCloseLoginPopup} />
     </header>
   );
 };

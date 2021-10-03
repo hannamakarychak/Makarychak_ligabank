@@ -5,6 +5,7 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.12.4",
     "@googlemaps/markerclusterer": "^1.0.4",
+    "@reach/dialog": "^0.16.0",
     "@reach/listbox": "^0.16.1",
     "@reach/slider": "^0.16.0",
     "@reach/tabs": "^0.16.1",

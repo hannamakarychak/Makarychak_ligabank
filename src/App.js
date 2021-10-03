@@ -8,6 +8,7 @@ import Hero from './components/hero/hero';
 import Offers from './components/offers/offers';
 import Calculator from './components/calculator/calculator';
 import Map from './components/map/map';
+import LoginPopup from './components/login-popup/login-popup';
 
 function App() {
   const [history, setHistory] = useState([]);
@@ -30,6 +31,7 @@ function App() {
       <Offers />
       <Calculator />
       <Map />
+      {/* <LoginPopup /> */}
       {/* <Container>
         <Converter onSave={handleSaveClick} />
         <ExchangeHistory list={[...history].reverse()} onClear={() => setHistory([])} />
