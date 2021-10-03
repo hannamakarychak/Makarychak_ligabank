@@ -8,6 +8,11 @@ import InputRange from '../input-range/input-range';
 import './form.scss';
 
 const DEFAULT_PERCENTAGE = 10;
+const PARENT_CAPITAL = 470000;
+const MIN_TOTAL_LOAN = 500000;
+const HIGH_INTEREST_RATE = 9.4;
+const LOW_INTEREST_RATE = 8.5;
+const MIN_INCOME_SHARE = 0.45;
 
 const Form = () => {
   const [goal, setGoal] = useState('default');
@@ -44,7 +49,7 @@ const Form = () => {
   };
 
   const handleValidateInitialPayment = () => {
-    const isInitialPaymentValid = initialPayment / price >= 0.1;
+    const isInitialPaymentValid = initialPayment / price >= 0.1 && initialPayment / price < 1;
     if (isInitialPaymentValid) {
       return;
     }
@@ -60,6 +65,28 @@ const Form = () => {
       setLoanPeriod(30);
     }
   };
+
+  const interestRate = initialPaymentPercentage < 15 ? HIGH_INTEREST_RATE : LOW_INTEREST_RATE;
+
+  // СК
+  const totalLoan = isParentCapitalUsed
+    ? price - initialPayment - PARENT_CAPITAL
+    : price - initialPayment;
+
+  // ПС
+  const monthlyInterestRate = interestRate / 100 / 12;
+
+  // КП
+  const periodInMonths = loanPeriod * 12;
+
+  // АП
+  const annuityMonthlyPayment = Math.round(
+    totalLoan *
+      (monthlyInterestRate +
+        monthlyInterestRate / ((1 + monthlyInterestRate) ** periodInMonths - 1))
+  );
+
+  const minIncome = Math.round(annuityMonthlyPayment / MIN_INCOME_SHARE);
 
   return (
     <div className="form">
@@ -89,8 +116,8 @@ const Form = () => {
             <ListboxOption value="default" className="form__option visually-hidden">
               Выберите цель кредита
             </ListboxOption>
-            <ListboxOption value="mortgage">Ипотечное кредитование</ListboxOption>
-            <ListboxOption value="autoloan">Автомобильное кредитование</ListboxOption>
+            <ListboxOption value="Ипотека">Ипотечное кредитование</ListboxOption>
+            <ListboxOption value="Автокредит">Автомобильное кредитование</ListboxOption>
           </Listbox>
           {isGoalSelected && (
             <Fragment>
@@ -157,24 +184,40 @@ const Form = () => {
         {isGoalSelected && isPriceValid && (
           <div className="form__col">
             <div className="form__offer">
-              <h4 className="form__heading">Наше предложение</h4>
-              <div className="form__offer-container">
-                <div className="form__offer-col">
-                  <div className="form__value">1 330 000 рублей</div>
-                  <div className="form__text">Сумма ипотеки</div>
-                  <div className="form__value">27 868 рублей</div>
-                  <div className="form__text">Ежемесячный платеж</div>
-                </div>
-                <div className="form__offer-col">
-                  <div className="form__value">9,40%</div>
-                  <div className="form__text">Процентная ставка</div>
-                  <div className="form__value">61 929 рублей</div>
-                  <div className="form__text">Необходимый доход</div>
-                </div>
-              </div>
-              <button className="form__submit button" onClick={() => setIsUserFormVisible(true)}>
-                Оформить заявку
-              </button>
+              {totalLoan >= MIN_TOTAL_LOAN ? (
+                <Fragment>
+                  <h4 className="form__heading">Наше предложение</h4>
+                  <div className="form__offer-container">
+                    <div className="form__offer-col">
+                      <div className="form__value">{totalLoan} рублей</div>
+                      <div className="form__text">Сумма ипотеки</div>
+                      <div className="form__value">{annuityMonthlyPayment} рублей</div>
+                      <div className="form__text">Ежемесячный платеж</div>
+                    </div>
+                    <div className="form__offer-col">
+                      <div className="form__value">{interestRate}%</div>
+                      <div className="form__text">Процентная ставка</div>
+                      <div className="form__value">{minIncome} рублей</div>
+                      <div className="form__text">Необходимый доход</div>
+                    </div>
+                  </div>
+                  <button
+                    className="form__submit button"
+                    onClick={() => setIsUserFormVisible(true)}
+                  >
+                    Оформить заявку
+                  </button>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <h4 className="form__heading">
+                    Наш банк не выдаёт ипотечные кредиты меньше 500 000 рублей.
+                  </h4>
+                  <div className="form__text">
+                    Попробуйте использовать другие параметры для расчёта.
+                  </div>
+                </Fragment>
+              )}
             </div>
           </div>
         )}
@@ -185,23 +228,25 @@ const Form = () => {
             <h3 className="form__heading form__heading--application">Шаг 3. Оформление заявки</h3>
             <div className="form__row">
               <span className="form__application-text">Номер заявки</span>
-              <span className="form__application-value">№ 0010</span>
+              <span className="form__application-value">№ {'1'.padStart(4, '0')}</span>
             </div>
             <div className="form__row">
               <span className="form__application-text">Цель кредита</span>
-              <span className="form__application-value">Ипотека</span>
+              <span className="form__application-value">{goal}</span>
             </div>
             <div className="form__row">
-              <span className="form__application-text">Стоимость недвижимости</span>
-              <span className="form__application-value">2 000 000 рублей</span>
+              <span className="form__application-text">
+                Стоимость {goal === 'Ипотека' ? 'недвижимости' : 'автомобиля'}
+              </span>
+              <span className="form__application-value">{price} рублей</span>
             </div>
             <div className="form__row">
               <span className="form__application-text">Первоначальный взнос</span>
-              <span className="form__application-value">200 000 рублей</span>
+              <span className="form__application-value">{initialPayment} рублей</span>
             </div>
             <div className="form__row">
               <span className="form__application-text">Срок кредитования</span>
-              <span className="form__application-value">5 лет</span>
+              <span className="form__application-value">{loanPeriod} лет</span>
             </div>
             <div>
               <input
