@@ -1,50 +1,92 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import '@reach/listbox/styles.css';
 
 import NumericInput from '../numeric-input/numeric-input';
 import InputRange from '../input-range/input-range';
+import { calculateCarLoan, calculateMortgage, getMinIncome } from '../../utils/calculators';
 
 import './form.scss';
+import UserForm from '../user-form/user-form';
 
-const DEFAULT_PERCENTAGE = 10;
-const PARENT_CAPITAL = 470000;
-const MIN_TOTAL_LOAN = 500000;
-const HIGH_INTEREST_RATE = 9.4;
-const LOW_INTEREST_RATE = 8.5;
-const MIN_INCOME_SHARE = 0.45;
+const DEFAULT_PRICE = 2000000;
+
+// mortage related constants
+const MIN_HOUSE_PERCENTAGE = 10;
+const MIN_TOTAL_MORTGAGE = 500000;
+const MIN_HOUSE_PRICE = 1200000;
+const MAX_HOUSE_PRICE = 25000000;
+const HOUSE_PRICE_STEP = 100000;
+const MIN_MORTGAGE_PERIOD = 5;
+const MAX_MORTGAGE_PERIOD = 30;
+
+// car loan
+const MIN_CAR_PERCENTAGE = 20;
+const MIN_TOTAL_CAR_LOAN = 200000;
+const MIN_CAR_PRICE = 500000;
+const MAX_CAR_PRICE = 5000000;
+const CAR_PRICE_STEP = 50000;
+const MIN_CAR_LOAN_PERIOD = 1;
+const MAX_CAR_LOAN_PERIOD = 5;
 
 const Form = () => {
   const [goal, setGoal] = useState('default');
-  const [price, setPrice] = useState(2000000);
-  const [isPriceValid, setIsPriceValid] = useState(true);
-  const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(DEFAULT_PERCENTAGE);
-  const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
-  const [isUserFormVisible, setIsUserFormVisible] = useState(false);
-  const [loanPeriod, setLoanPeriod] = useState(5);
-  const [isParentCapitalUsed, setIsParentCapitalUsed] = useState(false);
+  const isMortgage = goal === 'Ипотека';
 
+  const minPercentage = isMortgage ? MIN_HOUSE_PERCENTAGE : MIN_CAR_PERCENTAGE;
   const isGoalSelected = goal !== 'default';
 
-  const handleChangePrice = (newPrice) => {
-    setPrice(newPrice);
-    setInitialPayment((newPrice * DEFAULT_PERCENTAGE) / 100);
-    setInitialPaymentPercentage(DEFAULT_PERCENTAGE);
-    setIsPriceValid(true);
-  };
+  const [price, setPrice] = useState(DEFAULT_PRICE);
+  const [isPriceValid, setIsPriceValid] = useState(true);
+  const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(minPercentage);
+  const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
+  const [isUserFormVisible, setIsUserFormVisible] = useState(false);
+  const [loanPeriod, setLoanPeriod] = useState(0);
+  const [isParentCapitalUsed, setIsParentCapitalUsed] = useState(false);
+  const [isCascoNeeded, setIsCascoNeeded] = useState(false);
+  const [isInsuranceNeeded, setIsInsuranceNeeded] = useState(false);
+
+  const minPrice = isMortgage ? MIN_HOUSE_PRICE : MIN_CAR_PRICE;
+  const maxPrice = isMortgage ? MAX_HOUSE_PRICE : MAX_CAR_PRICE;
+  const priceStep = isMortgage ? HOUSE_PRICE_STEP : CAR_PRICE_STEP;
+  const minTotal = isMortgage ? MIN_TOTAL_MORTGAGE : MIN_TOTAL_CAR_LOAN;
+  const minPeriod = isMortgage ? MIN_MORTGAGE_PERIOD : MIN_CAR_LOAN_PERIOD;
+  const maxPeriod = isMortgage ? MAX_MORTGAGE_PERIOD : MAX_CAR_LOAN_PERIOD;
+
+  const handleChangePrice = useCallback(
+    (newPrice) => {
+      setPrice(newPrice);
+      setInitialPayment((newPrice * minPercentage) / 100);
+      setInitialPaymentPercentage(minPercentage);
+      setIsPriceValid(true);
+      setIsUserFormVisible(false);
+    },
+    [minPercentage]
+  );
+
+  useEffect(() => {
+    handleChangePrice(DEFAULT_PRICE);
+    setLoanPeriod(isMortgage ? MIN_MORTGAGE_PERIOD : MIN_CAR_LOAN_PERIOD);
+    setIsUserFormVisible(false);
+    setIsParentCapitalUsed(false);
+    setIsCascoNeeded(false);
+    setIsInsuranceNeeded(false);
+  }, [isMortgage, handleChangePrice]);
 
   const handleChangeInitialPayment = (newInitialPayment) => {
     setInitialPayment(newInitialPayment);
     setInitialPaymentPercentage((newInitialPayment / price) * 100);
+    setIsUserFormVisible(false);
   };
 
   const handleChangeInitialPaymentPercentage = (newPercentage) => {
     setInitialPaymentPercentage(newPercentage);
     setInitialPayment(Math.round((newPercentage * price) / 100));
+    setIsUserFormVisible(false);
   };
 
   const handleValidatePrice = () => {
-    const isValid = !isNaN(parseInt(price, 10)) && price >= 1200000 && price <= 25000000;
+    const isValid = !isNaN(parseInt(price, 10)) && price >= minPrice && price <= maxPrice;
     setIsPriceValid(isValid);
   };
 
@@ -54,39 +96,27 @@ const Form = () => {
       return;
     }
 
-    handleChangeInitialPayment((price * DEFAULT_PERCENTAGE) / 100);
+    handleChangeInitialPayment((price * minPercentage) / 100);
   };
 
   const handleValidateLoanPeriod = () => {
     const isLoanPeriodValid = !isNaN(parseInt(loanPeriod, 10));
-    if (!isLoanPeriodValid || loanPeriod < 5) {
-      setLoanPeriod(5);
-    } else if (loanPeriod > 30) {
-      setLoanPeriod(30);
+    if (!isLoanPeriodValid || loanPeriod < minPeriod) {
+      setLoanPeriod(minPeriod);
+    } else if (loanPeriod > maxPeriod) {
+      setLoanPeriod(maxPeriod);
     }
   };
 
-  const interestRate = initialPaymentPercentage < 15 ? HIGH_INTEREST_RATE : LOW_INTEREST_RATE;
-
-  // СК
-  const totalLoan = isParentCapitalUsed
-    ? price - initialPayment - PARENT_CAPITAL
-    : price - initialPayment;
-
-  // ПС
-  const monthlyInterestRate = interestRate / 100 / 12;
-
-  // КП
-  const periodInMonths = loanPeriod * 12;
-
-  // АП
-  const annuityMonthlyPayment = Math.round(
-    totalLoan *
-      (monthlyInterestRate +
-        monthlyInterestRate / ((1 + monthlyInterestRate) ** periodInMonths - 1))
-  );
-
-  const minIncome = Math.round(annuityMonthlyPayment / MIN_INCOME_SHARE);
+  const { interestRate, totalLoan, annuityMonthlyPayment } = isMortgage
+    ? calculateMortgage(
+        price,
+        initialPayment,
+        initialPaymentPercentage,
+        isParentCapitalUsed,
+        loanPeriod
+      )
+    : calculateCarLoan(price, initialPayment, isCascoNeeded, isInsuranceNeeded, loanPeriod);
 
   return (
     <div className="form">
@@ -94,8 +124,6 @@ const Form = () => {
         className="form__top"
         onSubmit={(e) => {
           e.preventDefault();
-
-          console.log('submitted');
         }}
       >
         <div className="form__col">
@@ -122,15 +150,20 @@ const Form = () => {
           {isGoalSelected && (
             <Fragment>
               <h3 className="form__heading">Шаг 2. Введите параметры кредита</h3>
-              <span className="form__label">Стоимость недвижимости</span>
+              <span className="form__label">
+                Стоимость {isMortgage ? 'недвижимости' : 'автомобиля'}
+              </span>
               <NumericInput
                 onBlur={handleValidatePrice}
                 className="form__price-selector"
                 isValid={isPriceValid}
                 value={price}
+                step={priceStep}
                 onChange={handleChangePrice}
               />
-              <div className="form__description">От 1 200 000 до 25 000 000 рублей</div>
+              <div className="form__description">
+                От {minPrice} до {maxPrice} рублей
+              </div>
               {isPriceValid && (
                 <Fragment>
                   <span className="form__label">Первоначальный взнос</span>
@@ -141,7 +174,7 @@ const Form = () => {
                     isValid={isPriceValid}
                     unit="рублей"
                     leftSign={`${Math.round(initialPaymentPercentage)}%`}
-                    min={10}
+                    min={minPercentage}
                     max={100}
                     step={5}
                     onChange={handleChangeInitialPayment}
@@ -155,10 +188,10 @@ const Form = () => {
                     rangeValue={loanPeriod}
                     isValid={isPriceValid}
                     unit="лет"
-                    leftSign="5 лет"
-                    rightSign="30 лет"
-                    min={5}
-                    max={30}
+                    leftSign={`${minPeriod} лет`}
+                    rightSign={`${maxPeriod} лет`}
+                    min={minPeriod}
+                    max={maxPeriod}
                     step={1}
                     onChange={setLoanPeriod}
                     onRangeValueChange={setLoanPeriod}
@@ -167,37 +200,74 @@ const Form = () => {
                 </Fragment>
               )}
 
-              <input
-                type="checkbox"
-                value="assets"
-                id="assets"
-                className="form__checkbox"
-                checked={isParentCapitalUsed}
-                onChange={() => setIsParentCapitalUsed(!isParentCapitalUsed)}
-              />
-              <label htmlFor="assets" className="form__checkbox-label">
-                Использовать материнский капитал
-              </label>
+              {isMortgage ? (
+                <Fragment>
+                  <input
+                    type="checkbox"
+                    value="assets"
+                    id="assets"
+                    className="form__checkbox"
+                    checked={isParentCapitalUsed}
+                    onChange={() => setIsParentCapitalUsed(!isParentCapitalUsed)}
+                  />
+                  <label htmlFor="assets" className="form__checkbox-label">
+                    Использовать материнский капитал
+                  </label>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <div>
+                    <input
+                      type="checkbox"
+                      value="casco"
+                      id="casco"
+                      className="form__checkbox"
+                      checked={isCascoNeeded}
+                      onChange={() => setIsCascoNeeded(!isCascoNeeded)}
+                    />
+                    <label htmlFor="casco" className="form__checkbox-label">
+                      Оформить КАСКО в нашем банке
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      value="insurance"
+                      id="insurance"
+                      className="form__checkbox"
+                      checked={isInsuranceNeeded}
+                      onChange={() => setIsInsuranceNeeded(!isInsuranceNeeded)}
+                    />
+                    <label htmlFor="insurance" className="form__checkbox-label">
+                      Оформить Страхование жизни в нашем банке
+                    </label>
+                  </div>
+                </Fragment>
+              )}
             </Fragment>
           )}
         </div>
         {isGoalSelected && isPriceValid && (
           <div className="form__col">
             <div className="form__offer">
-              {totalLoan >= MIN_TOTAL_LOAN ? (
+              {totalLoan >= minTotal ? (
                 <Fragment>
                   <h4 className="form__heading">Наше предложение</h4>
                   <div className="form__offer-container">
                     <div className="form__offer-col">
                       <div className="form__value">{totalLoan} рублей</div>
-                      <div className="form__text">Сумма ипотеки</div>
+                      <div className="form__text">
+                        Сумма {isMortgage ? 'ипотеки' : 'автокредита'}
+                      </div>
                       <div className="form__value">{annuityMonthlyPayment} рублей</div>
                       <div className="form__text">Ежемесячный платеж</div>
                     </div>
                     <div className="form__offer-col">
                       <div className="form__value">{interestRate}%</div>
                       <div className="form__text">Процентная ставка</div>
-                      <div className="form__value">{minIncome} рублей</div>
+                      <div className="form__value">
+                        {getMinIncome(annuityMonthlyPayment)} рублей
+                      </div>
                       <div className="form__text">Необходимый доход</div>
                     </div>
                   </div>
@@ -211,7 +281,7 @@ const Form = () => {
               ) : (
                 <Fragment>
                   <h4 className="form__heading">
-                    Наш банк не выдаёт ипотечные кредиты меньше 500 000 рублей.
+                    Наш банк не выдаёт ипотечные кредиты меньше {minTotal} рублей.
                   </h4>
                   <div className="form__text">
                     Попробуйте использовать другие параметры для расчёта.
@@ -222,59 +292,15 @@ const Form = () => {
           </div>
         )}
       </form>
-      {isUserFormVisible && (
-        <form className="form__bottom">
-          <div className="form__application">
-            <h3 className="form__heading form__heading--application">Шаг 3. Оформление заявки</h3>
-            <div className="form__row">
-              <span className="form__application-text">Номер заявки</span>
-              <span className="form__application-value">№ {'1'.padStart(4, '0')}</span>
-            </div>
-            <div className="form__row">
-              <span className="form__application-text">Цель кредита</span>
-              <span className="form__application-value">{goal}</span>
-            </div>
-            <div className="form__row">
-              <span className="form__application-text">
-                Стоимость {goal === 'Ипотека' ? 'недвижимости' : 'автомобиля'}
-              </span>
-              <span className="form__application-value">{price} рублей</span>
-            </div>
-            <div className="form__row">
-              <span className="form__application-text">Первоначальный взнос</span>
-              <span className="form__application-value">{initialPayment} рублей</span>
-            </div>
-            <div className="form__row">
-              <span className="form__application-text">Срок кредитования</span>
-              <span className="form__application-value">{loanPeriod} лет</span>
-            </div>
-            <div>
-              <input
-                type="text"
-                className="form__application-input"
-                id="name"
-                placeholder="ФИО"
-                required
-              />
-              <input
-                className="form__application-input form__application-input--half"
-                id="tel"
-                placeholder="Телефон"
-                type="tel"
-                pattern="^\+?7(\d{10})$"
-                required
-              />
-              <input
-                className="form__application-input form__application-input--half"
-                id="email"
-                type="email"
-                placeholder="E-mail"
-                required
-              />
-            </div>
-            <button className="form__button button">Отправить</button>
-          </div>
-        </form>
+      {isUserFormVisible && isPriceValid && (
+        <UserForm
+          goal={goal}
+          price={price}
+          isMortgage={isMortgage}
+          initialPayment={initialPayment}
+          loanPeriod={loanPeriod}
+          onSubmit={() => console.log('submiiit')}
+        />
       )}
     </div>
   );

@@ -2,9 +2,7 @@ import classNames from 'classnames';
 
 import './numeric-input.scss';
 
-const STEP = 100000;
-
-const NumericInput = ({ value, className, onChange, isValid, onBlur }) => {
+const NumericInput = ({ value, className, onChange, isValid, onBlur, step }) => {
   return (
     <div
       className={classNames(className, 'numeric-input', { 'numeric-input--invalid': !isValid })}
@@ -23,7 +21,7 @@ const NumericInput = ({ value, className, onChange, isValid, onBlur }) => {
       tabIndex="-1"
     >
       <button
-        onClick={() => onChange(isValid ? parseInt(value - STEP, 10) : STEP)}
+        onClick={() => onChange(isValid ? parseInt(value - step, 10) : step)}
         className="numeric-input__button"
       >
         -
@@ -47,7 +45,7 @@ const NumericInput = ({ value, className, onChange, isValid, onBlur }) => {
       {isValid && <span className="numeric-input__text">рублей</span>}
 
       <button
-        onClick={() => onChange(isValid ? parseInt(value + STEP, 10) : STEP)}
+        onClick={() => onChange(isValid ? parseInt(value + step, 10) : step)}
         className="numeric-input__button"
       >
         +
