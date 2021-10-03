@@ -1,3 +1,6 @@
+.offers {
+  margin-top: 60px;
+}
 .offers__item {
   padding: 55px 70px 60px 70px;
   background-color: var(--color-light);
@@ -157,10 +160,11 @@
 @media only screen and (max-width: 1023px) {
   .offers {
     background-color: var(--color-light);
+    margin-top: 0;
   }
   .offers__item {
-    padding: 55px 45px 60px 45px;
-    background-position: 94.14% 53%;
+    padding: 55px 0 60px 0;
+    background-position: 100% 53%;
 
     &--invest {
       background-image: url('../../img/piggybank-tablet.jpg');
@@ -230,6 +234,21 @@
 
     &:last-child {
       margin-bottom: 33px;
+    }
+  }
+
+  .ft-slick__dots--custom {
+    background: var(--blue-dark);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .slick-active .ft-slick__dots--custom {
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: #e0e0e0;
     }
   }
 }

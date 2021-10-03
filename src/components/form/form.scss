@@ -41,9 +41,18 @@
 
 [data-reach-listbox-option] {
   padding: 20px 20px;
+
   &:nth-child(2) {
     border-bottom: 1px solid #c1c2ca;
   }
+}
+
+[data-reach-slider-input] {
+  margin-left: 7px;
+}
+
+[data-reach-slider-handle] {
+  background-color: var(--accent-bg-color);
 }
 
 .form__label {
