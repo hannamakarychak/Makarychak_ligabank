@@ -24,7 +24,7 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
     >
       <div className="login-popup__top">
         <Logo hasMoto />
-        <button className="login-popup__close close-button" onClick={onClose}>
+        <button className="login-popup__close" onClick={onClose}>
           <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="m1 1 16 16m0-16L1 17"

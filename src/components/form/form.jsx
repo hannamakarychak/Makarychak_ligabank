@@ -1,13 +1,14 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import '@reach/listbox/styles.css';
 
 import NumericInput from '../numeric-input/numeric-input';
 import InputRange from '../input-range/input-range';
+import UserForm from '../user-form/user-form';
+import SuccessMessage from '../success-message/success-message';
 import { calculateCarLoan, calculateMortgage, getMinIncome } from '../../utils/calculators';
 
 import './form.scss';
-import UserForm from '../user-form/user-form';
 
 const DEFAULT_PRICE = 2000000;
 
@@ -31,21 +32,20 @@ const MAX_CAR_LOAN_PERIOD = 5;
 
 const Form = () => {
   const [goal, setGoal] = useState('default');
-  const isMortgage = goal === 'Ипотека';
-
-  const minPercentage = isMortgage ? MIN_HOUSE_PERCENTAGE : MIN_CAR_PERCENTAGE;
-  const isGoalSelected = goal !== 'default';
-
   const [price, setPrice] = useState(DEFAULT_PRICE);
   const [isPriceValid, setIsPriceValid] = useState(true);
-  const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(minPercentage);
+  const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(0);
   const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
   const [isUserFormVisible, setIsUserFormVisible] = useState(false);
   const [loanPeriod, setLoanPeriod] = useState(0);
   const [isParentCapitalUsed, setIsParentCapitalUsed] = useState(false);
   const [isCascoNeeded, setIsCascoNeeded] = useState(false);
   const [isInsuranceNeeded, setIsInsuranceNeeded] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
 
+  const isMortgage = goal === 'Ипотека';
+  const minPercentage = isMortgage ? MIN_HOUSE_PERCENTAGE : MIN_CAR_PERCENTAGE;
+  const isGoalSelected = goal !== 'default';
   const minPrice = isMortgage ? MIN_HOUSE_PRICE : MIN_CAR_PRICE;
   const maxPrice = isMortgage ? MAX_HOUSE_PRICE : MAX_CAR_PRICE;
   const priceStep = isMortgage ? HOUSE_PRICE_STEP : CAR_PRICE_STEP;
@@ -64,7 +64,7 @@ const Form = () => {
     [minPercentage]
   );
 
-  useEffect(() => {
+  const resetForm = useCallback(() => {
     handleChangePrice(DEFAULT_PRICE);
     setLoanPeriod(isMortgage ? MIN_MORTGAGE_PERIOD : MIN_CAR_LOAN_PERIOD);
     setIsUserFormVisible(false);
@@ -72,6 +72,10 @@ const Form = () => {
     setIsCascoNeeded(false);
     setIsInsuranceNeeded(false);
   }, [isMortgage, handleChangePrice]);
+
+  useEffect(() => {
+    resetForm();
+  }, [isMortgage, handleChangePrice, resetForm]);
 
   const handleChangeInitialPayment = (newInitialPayment) => {
     setInitialPayment(newInitialPayment);
@@ -117,6 +121,13 @@ const Form = () => {
         loanPeriod
       )
     : calculateCarLoan(price, initialPayment, isCascoNeeded, isInsuranceNeeded, loanPeriod);
+
+  const handleFormSubmit = (userData) => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+    resetForm();
+    setIsSuccessPopupOpen(true);
+    setGoal('default');
+  };
 
   return (
     <div className="form">
@@ -281,7 +292,8 @@ const Form = () => {
               ) : (
                 <Fragment>
                   <h4 className="form__heading">
-                    Наш банк не выдаёт ипотечные кредиты меньше {minTotal} рублей.
+                    Наш банк не выдаёт {isMortgage ? 'ипотечные' : 'автокредиты'} кредиты меньше{' '}
+                    {minTotal} рублей.
                   </h4>
                   <div className="form__text">
                     Попробуйте использовать другие параметры для расчёта.
@@ -299,9 +311,11 @@ const Form = () => {
           isMortgage={isMortgage}
           initialPayment={initialPayment}
           loanPeriod={loanPeriod}
-          onSubmit={() => console.log('submiiit')}
+          onSubmit={handleFormSubmit}
         />
       )}
+
+      <SuccessMessage isOpen={isSuccessPopupOpen} onClose={() => setIsSuccessPopupOpen(false)} />
     </div>
   );
 };

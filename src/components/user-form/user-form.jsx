@@ -12,7 +12,11 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
       className="user-form"
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit();
+        onSubmit({
+          userName: e.target.username.value,
+          phone: e.target.phone.value,
+          email: e.target.email.value,
+        });
       }}
     >
       <div className="user-form__application">
@@ -47,6 +51,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
             placeholder="ФИО"
             required
             ref={nameInputRef}
+            name="username"
           />
           <input
             className="user-form__application-input user-form__application-input--half"
@@ -55,6 +60,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
             type="tel"
             pattern="^\+?7(\d{10})$"
             required
+            name="phone"
           />
           <input
             className="user-form__application-input user-form__application-input--half"
@@ -62,6 +68,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
             type="email"
             placeholder="E-mail"
             required
+            name="email"
           />
         </div>
         <button className="user-form__button button">Отправить</button>
