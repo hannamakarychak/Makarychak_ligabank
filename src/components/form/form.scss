@@ -1,4 +1,4 @@
-.form {
+.form__top {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -10,11 +10,11 @@
   &:first-child {
     margin-right: 7rem;
   }
+}
 
-  &:last-child {
-    margin: 0 auto;
-    width: 66%;
-  }
+.form__bottom {
+  margin: 0 auto;
+  width: 66%;
 }
 
 .form__heading {

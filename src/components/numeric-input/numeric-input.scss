@@ -5,6 +5,14 @@
   margin: 12px 0 7px;
   border: 1px solid var(--font-color-dark);
   border-radius: 4px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--font-color-dark);
+
+  &--invalid {
+    border-color: red;
+  }
 }
 
 .numeric-input__field {
@@ -15,6 +23,11 @@
   margin-right: 5px;
   width: 50%;
 
+  &--invalid {
+    width: 100%;
+    text-align: center;
+  }
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -23,6 +36,7 @@
 
 .numeric-input__field,
 .numeric-input__text {
+  font-family: 'Roboto';
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;

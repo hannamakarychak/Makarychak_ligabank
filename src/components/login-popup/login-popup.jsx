@@ -15,9 +15,15 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <Dialog isOpen={isOpen} onDismiss={onClose} className="login-popup" initialFocusRef={inputRef}>
+    <Dialog
+      isOpen={isOpen}
+      onDismiss={onClose}
+      className="login-popup"
+      initialFocusRef={inputRef}
+      aria-label="Логин"
+    >
       <div className="login-popup__top">
-        <Logo moto />
+        <Logo hasMoto />
         <button className="login-popup__close close-button" onClick={onClose}>
           <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

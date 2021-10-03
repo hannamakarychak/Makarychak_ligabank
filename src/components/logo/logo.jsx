@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './logo.scss';
 
-const Logo = ({ className, moto }) => {
+const Logo = ({ className, hasMoto }) => {
   return (
     <div className={classNames('logo', className)}>
       <svg
@@ -43,15 +42,10 @@ const Logo = ({ className, moto }) => {
             fill="#1F1E25"
           />
         </svg>
-        {moto && <span className="logo__moto">интернет-банк</span>}
+        {hasMoto && <span className="logo__moto">интернет-банк</span>}
       </div>
     </div>
   );
-};
-
-Logo.propTypes = {
-  className: PropTypes.string,
-  moto: PropTypes.string,
 };
 
 export default Logo;

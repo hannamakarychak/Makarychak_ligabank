@@ -23,7 +23,7 @@ const Offers = () => {
   };
 
   const offers = [
-    <div className="offers__item offers__item--invest">
+    <div className="offers__item offers__item--invest" key="offer-invest">
       <div className="offers__moto">Вклады Лига Банка – это выгодная инвестиция в свое будущее</div>
       <ul className="offers__list">
         <li className="offers__list-item">Проценты по вкладам до 7%</li>
@@ -34,7 +34,7 @@ const Offers = () => {
       </ul>
       <button className="offers__button button">Узнать подробнее</button>
     </div>,
-    <div className="offers__item offers__item--loan">
+    <div className="offers__item offers__item--loan" key="offer-loan">
       <div className="offers__moto">Лига Банк выдает кредиты под любые цели</div>
       <ul className="offers__list">
         <li className="offers__list-item">Ипотечный кредит</li>
@@ -48,7 +48,7 @@ const Offers = () => {
         </a>
       </div>
     </div>,
-    <div className="offers__item offers__item--insurance">
+    <div className="offers__item offers__item--insurance" key="offer-insurance">
       <div className="offers__moto">Лига Страхование — застрахуем все что захотите</div>
       <ul className="offers__list">
         <li className="offers__list-item">Автомобильное страхование</li>
@@ -57,7 +57,7 @@ const Offers = () => {
       </ul>
       <button className="offers__button button">Узнать подробнее</button>
     </div>,
-    <div className="offers__item offers__item--online">
+    <div className="offers__item offers__item--online" key="offer-online">
       <div className="offers__moto">
         Лига Банк — это огромное количество онлайн-сервисов для вашего удобства
       </div>
@@ -84,8 +84,8 @@ const Offers = () => {
               <Tab className="offers__tab-button offers__tab-button--online">Онлайн-сервисы</Tab>
             </TabList>
             <TabPanels>
-              {offers.map((el, index) => (
-                <TabPanel key={el + index}>{el}</TabPanel>
+              {offers.map((el) => (
+                <TabPanel key={el.key}>{el}</TabPanel>
               ))}
             </TabPanels>
           </Tabs>
