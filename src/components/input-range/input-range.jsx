@@ -56,8 +56,8 @@ const InputRange = ({
         </SliderTrack>
       </SliderInput>
       <div className="input-range__description">
-        <span>{leftSign}</span>
-        <span>{rightSign}</span>
+        <span className="input-range__sign">{leftSign}</span>
+        <span className="input-range__sign">{rightSign}</span>
       </div>
     </div>
   );

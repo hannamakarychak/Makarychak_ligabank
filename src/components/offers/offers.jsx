@@ -18,6 +18,7 @@ const Offers = () => {
     infinite: true,
     speed: 500,
     autoplaySpeed: 4000,
+    arrows: false,
     appendDots: (dots) => <ul>{dots}</ul>,
     customPaging: (i) => <div className="ft-slick__dots--custom" />,
   };
