@@ -10,16 +10,16 @@ import './form.scss';
 const DEFAULT_PERCENTAGE = 10;
 
 const Form = () => {
-  const [goal, setGoal] = useState('mortgage');
+  const [goal, setGoal] = useState('default');
   const [price, setPrice] = useState(2000000);
   const [isPriceValid, setIsPriceValid] = useState(true);
   const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(DEFAULT_PERCENTAGE);
   const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
   const [isUserFormVisible, setIsUserFormVisible] = useState(false);
   const [loanPeriod, setLoanPeriod] = useState(5);
+  const [isParentCapitalUsed, setIsParentCapitalUsed] = useState(false);
 
   const isGoalSelected = goal !== 'default';
-  const isFinalOfferVisible = isGoalSelected && true;
 
   const handleChangePrice = (newPrice) => {
     setPrice(newPrice);
@@ -104,46 +104,57 @@ const Form = () => {
                 onChange={handleChangePrice}
               />
               <div className="form__description">От 1 200 000 до 25 000 000 рублей</div>
-              <span className="form__label">Первоначальный взнос</span>
-              <InputRange
-                className="form__input"
-                value={initialPayment}
-                rangeValue={initialPaymentPercentage}
-                isValid={isPriceValid}
-                unit="рублей"
-                leftSign={`${Math.round(initialPaymentPercentage)}%`}
-                min={10}
-                max={100}
-                step={5}
-                onChange={handleChangeInitialPayment}
-                onRangeValueChange={handleChangeInitialPaymentPercentage}
-                onBlur={handleValidateInitialPayment}
-              />
+              {isPriceValid && (
+                <Fragment>
+                  <span className="form__label">Первоначальный взнос</span>
+                  <InputRange
+                    className="form__input"
+                    value={initialPayment}
+                    rangeValue={initialPaymentPercentage}
+                    isValid={isPriceValid}
+                    unit="рублей"
+                    leftSign={`${Math.round(initialPaymentPercentage)}%`}
+                    min={10}
+                    max={100}
+                    step={5}
+                    onChange={handleChangeInitialPayment}
+                    onRangeValueChange={handleChangeInitialPaymentPercentage}
+                    onBlur={handleValidateInitialPayment}
+                  />
 
-              <InputRange
-                className="form__input"
-                value={loanPeriod}
-                rangeValue={loanPeriod}
-                isValid={isPriceValid}
-                unit="лет"
-                leftSign="5 лет"
-                rightSign="30 лет"
-                min={5}
-                max={30}
-                step={1}
-                onChange={setLoanPeriod}
-                onRangeValueChange={setLoanPeriod}
-                onBlur={handleValidateLoanPeriod}
-              />
+                  <InputRange
+                    className="form__input"
+                    value={loanPeriod}
+                    rangeValue={loanPeriod}
+                    isValid={isPriceValid}
+                    unit="лет"
+                    leftSign="5 лет"
+                    rightSign="30 лет"
+                    min={5}
+                    max={30}
+                    step={1}
+                    onChange={setLoanPeriod}
+                    onRangeValueChange={setLoanPeriod}
+                    onBlur={handleValidateLoanPeriod}
+                  />
+                </Fragment>
+              )}
 
-              <input type="checkbox" value="assets" id="assets" className="form__checkbox" />
+              <input
+                type="checkbox"
+                value="assets"
+                id="assets"
+                className="form__checkbox"
+                checked={isParentCapitalUsed}
+                onChange={() => setIsParentCapitalUsed(!isParentCapitalUsed)}
+              />
               <label htmlFor="assets" className="form__checkbox-label">
                 Использовать материнский капитал
               </label>
             </Fragment>
           )}
         </div>
-        {isFinalOfferVisible && (
+        {isGoalSelected && isPriceValid && (
           <div className="form__col">
             <div className="form__offer">
               <h4 className="form__heading">Наше предложение</h4>
