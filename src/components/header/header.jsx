@@ -21,6 +21,11 @@ const Header = () => {
     setIsLoginPopupOpen(false);
   };
 
+  const handleLogin = (loginData) => {
+    localStorage.setItem('loginData', JSON.stringify(loginData));
+    setIsLoginPopupOpen(false);
+  };
+
   return (
     <header className="header">
       <Container className="header__wrapper">
@@ -56,7 +61,11 @@ const Header = () => {
           <span className="header__login-text">Войти в Интернет-банк</span>
         </button>
       </Container>
-      <LoginPopup isOpen={isLoginPopupOpen} onClose={handleCloseLoginPopup} />
+      <LoginPopup
+        isOpen={isLoginPopupOpen}
+        onClose={handleCloseLoginPopup}
+        onSubmit={handleLogin}
+      />
     </header>
   );
 };

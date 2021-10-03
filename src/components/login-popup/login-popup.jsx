@@ -36,7 +36,17 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
           </svg>
         </button>
       </div>
-      <form className="login-popup__form">
+      <form
+        className="login-popup__form"
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          onSubmit({
+            login: e.target.login.value,
+            password: e.target.password.value,
+          });
+        }}
+      >
         <label htmlFor="login" className="login-popup__label">
           Логин
         </label>
