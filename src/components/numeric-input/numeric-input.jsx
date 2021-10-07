@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { getNumberWithSpaces } from '../../utils/numbers';
 
 import './numeric-input.scss';
 
@@ -24,10 +25,10 @@ const NumericInput = ({ value, className, onChange, isValid, step, min, max }) =
         className={classNames('numeric-input__field', {
           'numeric-input__field--invalid': !isValid,
         })}
-        value={value}
+        value={getNumberWithSpaces(value)}
         type="text"
         onChange={(e) => {
-          const numericValue = parseInt(e.target.value, 10);
+          const numericValue = parseInt(e.target.value.replaceAll(' ', ''), 10);
           onChange(isNaN(numericValue) ? '' : numericValue);
         }}
       />

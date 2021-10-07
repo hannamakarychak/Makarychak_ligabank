@@ -7,6 +7,7 @@ import InputRange from '../input-range/input-range';
 import UserForm from '../user-form/user-form';
 import SuccessMessage from '../success-message/success-message';
 import { calculateCarLoan, calculateMortgage, getMinIncome } from '../../utils/calculators';
+import { getNumberWithSpaces } from '../../utils/numbers';
 
 import './form.scss';
 
@@ -277,10 +278,12 @@ const Form = () => {
                 <h4 className="form__heading form__heading--offer">Наше предложение</h4>
                 <div className="form__offer-container">
                   <div className="form__offer-col">
-                    <div className="form__value">{renderValidValue(`${totalLoan} рублей`)}</div>
+                    <div className="form__value">
+                      {renderValidValue(`${getNumberWithSpaces(totalLoan)} рублей`)}
+                    </div>
                     <div className="form__text">Сумма {isMortgage ? 'ипотеки' : 'автокредита'}</div>
                     <div className="form__value">
-                      {renderValidValue(`${annuityMonthlyPayment} рублей`)}
+                      {renderValidValue(`${getNumberWithSpaces(annuityMonthlyPayment)} рублей`)}
                     </div>
                     <div className="form__text">Ежемесячный платеж</div>
                   </div>
@@ -288,7 +291,9 @@ const Form = () => {
                     <div className="form__value">{renderValidValue(`${interestRate}%`)}</div>
                     <div className="form__text">Процентная ставка</div>
                     <div className="form__value">
-                      {renderValidValue(`${getMinIncome(annuityMonthlyPayment)} рублей`)}
+                      {renderValidValue(
+                        `${getNumberWithSpaces(getMinIncome(annuityMonthlyPayment))} рублей`
+                      )}
                     </div>
                     <div className="form__text">Необходимый доход</div>
                   </div>
@@ -301,7 +306,7 @@ const Form = () => {
               <Fragment>
                 <h4 className="form__heading">
                   Наш банк не выдаёт {isMortgage ? 'ипотечные' : 'автокредиты'} кредиты меньше{' '}
-                  {minTotal} рублей.
+                  {getNumberWithSpaces(minTotal)} рублей.
                 </h4>
                 <div className="form__text">
                   Попробуйте использовать другие параметры для расчёта.

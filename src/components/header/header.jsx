@@ -38,7 +38,7 @@ const Header = () => {
         <button className="header__login-link" onClick={handleOpenLoginPopup}>
           {!isMenuOpen ? (
             <svg
-              classNames="header__login-icon"
+              className="header__login-icon" // TODO: check styles
               width="14"
               height="16"
               viewBox="0 0 14 16"

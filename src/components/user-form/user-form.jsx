@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { getNumberWithSpaces } from '../../utils/numbers';
 import './user-form.scss';
 
 const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmit, orderId }) => {
@@ -34,11 +35,13 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
           <span className="user-form__application-text">
             Стоимость {isMortgage ? 'недвижимости' : 'автомобиля'}
           </span>
-          <span className="user-form__application-value">{price} рублей</span>
+          <span className="user-form__application-value">{getNumberWithSpaces(price)} рублей</span>
         </div>
         <div className="user-form__row">
           <span className="user-form__application-text">Первоначальный взнос</span>
-          <span className="user-form__application-value">{initialPayment} рублей</span>
+          <span className="user-form__application-value">
+            {getNumberWithSpaces(initialPayment)} рублей
+          </span>
         </div>
         <div className="user-form__row user-form__row--last">
           <span className="user-form__application-text">Срок кредитования</span>
