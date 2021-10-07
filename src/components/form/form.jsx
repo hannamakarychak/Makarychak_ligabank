@@ -186,7 +186,7 @@ const Form = () => {
                 onChange={handleChangePrice}
               />
               <div className="form__description">
-                От {minPrice} до {maxPrice} рублей
+                От {getNumberWithSpaces(minPrice)} до {getNumberWithSpaces(maxPrice)} рублей
               </div>
               {isPriceValid && (
                 <Fragment>
