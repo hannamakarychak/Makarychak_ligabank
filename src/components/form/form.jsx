@@ -137,7 +137,7 @@ const Form = () => {
           e.preventDefault();
         }}
       >
-        <div className="form__col">
+        <div className="form__fields">
           <h3 className="form__heading" id="goal">
             Шаг 1. Цель кредита
           </h3>
@@ -192,7 +192,7 @@ const Form = () => {
                     onRangeValueChange={handleChangeInitialPaymentPercentage}
                     onBlur={handleValidateInitialPayment}
                   />
-
+                  <span className="form__label">Срок кредитования</span>
                   <InputRange
                     className="form__input"
                     value={loanPeriod}
@@ -259,48 +259,39 @@ const Form = () => {
           )}
         </div>
         {isGoalSelected && isPriceValid && (
-          <div className="form__col">
-            <div className="form__offer">
-              {totalLoan >= minTotal ? (
-                <Fragment>
-                  <h4 className="form__heading">Наше предложение</h4>
-                  <div className="form__offer-container">
-                    <div className="form__offer-col">
-                      <div className="form__value">{totalLoan} рублей</div>
-                      <div className="form__text">
-                        Сумма {isMortgage ? 'ипотеки' : 'автокредита'}
-                      </div>
-                      <div className="form__value">{annuityMonthlyPayment} рублей</div>
-                      <div className="form__text">Ежемесячный платеж</div>
-                    </div>
-                    <div className="form__offer-col">
-                      <div className="form__value">{interestRate}%</div>
-                      <div className="form__text">Процентная ставка</div>
-                      <div className="form__value">
-                        {getMinIncome(annuityMonthlyPayment)} рублей
-                      </div>
-                      <div className="form__text">Необходимый доход</div>
-                    </div>
+          <div className="form__offer">
+            {totalLoan >= minTotal ? (
+              <Fragment>
+                <h4 className="form__heading form__heading--offer">Наше предложение</h4>
+                <div className="form__offer-container">
+                  <div className="form__offer-col">
+                    <div className="form__value">{totalLoan} рублей</div>
+                    <div className="form__text">Сумма {isMortgage ? 'ипотеки' : 'автокредита'}</div>
+                    <div className="form__value">{annuityMonthlyPayment} рублей</div>
+                    <div className="form__text">Ежемесячный платеж</div>
                   </div>
-                  <button
-                    className="form__submit button"
-                    onClick={() => setIsUserFormVisible(true)}
-                  >
-                    Оформить заявку
-                  </button>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <h4 className="form__heading">
-                    Наш банк не выдаёт {isMortgage ? 'ипотечные' : 'автокредиты'} кредиты меньше{' '}
-                    {minTotal} рублей.
-                  </h4>
-                  <div className="form__text">
-                    Попробуйте использовать другие параметры для расчёта.
+                  <div className="form__offer-col">
+                    <div className="form__value">{interestRate}%</div>
+                    <div className="form__text">Процентная ставка</div>
+                    <div className="form__value">{getMinIncome(annuityMonthlyPayment)} рублей</div>
+                    <div className="form__text">Необходимый доход</div>
                   </div>
-                </Fragment>
-              )}
-            </div>
+                </div>
+                <button className="form__submit button" onClick={() => setIsUserFormVisible(true)}>
+                  Оформить заявку
+                </button>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <h4 className="form__heading">
+                  Наш банк не выдаёт {isMortgage ? 'ипотечные' : 'автокредиты'} кредиты меньше{' '}
+                  {minTotal} рублей.
+                </h4>
+                <div className="form__text">
+                  Попробуйте использовать другие параметры для расчёта.
+                </div>
+              </Fragment>
+            )}
           </div>
         )}
       </form>

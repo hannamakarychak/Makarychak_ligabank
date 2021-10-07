@@ -23,7 +23,7 @@ const Navigation = ({ className, isMenuOpen }) => {
           </a>
         </li>
         <li className="navigation__item">
-          <a className="navigation__link navigation__link--active" href="/">
+          <a className="navigation__link" href="/">
             Конвертер валют
           </a>
         </li>

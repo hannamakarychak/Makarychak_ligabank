@@ -4,6 +4,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-right: 71px;
   }
 
   &__item {
@@ -31,6 +32,14 @@
   .navigation__item {
     line-height: 16px;
     font-size: 14px;
+  }
+
+  .navigation__list {
+    margin-right: -57px;
+  }
+
+  .navigation__link {
+    margin-left: -3px;
   }
 }
 

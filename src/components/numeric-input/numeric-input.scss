@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  margin: 12px 0 7px;
+  margin: 5px 0 11px;
   border: 1px solid var(--font-color-dark);
   border-radius: 4px;
   font-weight: 500;
@@ -52,4 +52,10 @@
   border: none;
   background-color: transparent;
   font-size: 20px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .numeric-input {
+    margin: 5px 0 6px;
+  }
 }

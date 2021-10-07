@@ -1,5 +1,5 @@
 .header {
-  padding: 37px 0;
+  padding: 32px 0;
   background-color: var(--color-light);
 
   &__logo {
@@ -15,6 +15,8 @@
   &__login-link {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    line-height: 19px;
     margin-left: 10px;
     background-color: inherit;
     border: none;
@@ -45,11 +47,15 @@
 
 @media only screen and (max-width: 1023px) {
   .header {
-    padding: 23px 0 19px 0;
+    padding: 25px 0 20px 0;
   }
 
   .header__login-text {
     display: none;
+  }
+
+  .header__login-icon {
+    margin-right: -6px;
   }
 
   .header__close--tablet {

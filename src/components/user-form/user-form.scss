@@ -5,7 +5,7 @@
 
 .user-form__application {
   background-color: var(--color-light);
-  padding: 40px 70px 70px 70px;
+  padding: 36px 70px 70px 70px;
   margin-top: 70px;
 }
 
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 11px 0;
   border-bottom: 1px solid #c4c4c4;
 }
 
@@ -33,7 +33,7 @@
   width: 100%;
   font-size: 18px;
   line-height: 25px;
-  padding: 20px;
+  padding: 17px 17px 17px 25px;
   margin: 30px 0 30px 0;
   border-radius: 4px;
   border: 1px solid #0a1e32;
@@ -51,7 +51,7 @@
 }
 
 .user-form__button {
-  min-width: 37%;
+  min-width: 31%;
   margin: 0 auto;
 }
 
@@ -63,7 +63,7 @@
   color: var(--font-color-dark);
 
   width: 54%;
-  margin: 21px auto 16px auto;
+  margin: 21px auto 16px 173px;
 }
 
 @media only screen and (max-width: 1023px) {
@@ -77,9 +77,8 @@
   }
 
   .user-form__heading {
-    margin-bottom: 18px;
-    margin-top: 36px;
-    width: 100%;
+    font-size: 18px;
+    margin: 20px 0px 25px 223px;
   }
 
   .user-form__button {
@@ -87,11 +86,13 @@
   }
 
   .user-form__application-input {
-    padding: 16px;
+    padding: 16px 16px 16px 23px;
+    margin: 35px 0 30px 0;
 
     &--half {
       width: 47.7%;
       margin-top: 0;
+      margin-bottom: 41px;
     }
   }
 }

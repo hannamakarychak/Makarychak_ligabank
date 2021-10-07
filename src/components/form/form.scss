@@ -2,14 +2,13 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-.form__col {
-  width: 46.3%;
-
-  &:first-child {
-    margin-right: 7rem;
-  }
+.form__fields {
+  max-width: 670px;
+  flex: 1 0 auto;
+  padding-right: 70px;
 }
 
 .form__heading {
@@ -17,11 +16,12 @@
   font-weight: 500;
   font-size: 22px;
   line-height: 31px;
-  margin: 35px 0 26px 0;
+  margin: 35px 0 20px 0;
   color: var(--font-color-dark);
 }
 
 .form__listbox {
+  width: 100%;
   border: 1px solid var(--font-color-dark);
   border-radius: 4px;
 }
@@ -33,6 +33,9 @@
   padding: 20px;
   font-weight: 500;
   color: var(--font-color-dark);
+}
+[data-reach-listbox-button][aria-expanded='true'] {
+  margin-bottom: 120px;
 }
 
 [data-reach-listbox-arrow][data-expanded] {
@@ -64,7 +67,7 @@
 .form__description {
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 17px;
   color: var(--color-medium-dark);
 }
 
@@ -78,7 +81,10 @@
 
 .form__offer {
   background-color: var(--color-light);
-  padding: 30px 60px 60px 60px;
+  padding: 16px 60px 60px 60px;
+  flex: 1 1 auto;
+  max-width: 500px;
+  margin-top: 45px;
 }
 
 .form__offer-container {
@@ -98,7 +104,7 @@
 }
 
 .form__text {
-  margin: 0 0 31px 0;
+  margin: 0 0 22px 0;
   font-size: 16px;
   line-height: 22px;
   color: var(--grey-light);
@@ -106,27 +112,23 @@
 
 .form__submit {
   width: 100%;
+  margin-top: 8px;
 }
 
 @media only screen and (max-width: 1023px) {
   .form {
-    flex-direction: column;
+    display: block;
   }
 
-  .form__col {
-    width: 100%;
-
-    &:first-child {
-      margin-right: 0;
-    }
-
-    &:last-child {
-      width: 100%;
-    }
+  .form__fields {
+    max-width: 100%;
+    padding: 0;
   }
 
   .form__offer {
-    margin-top: 36px;
+    padding: 28px 60px 60px 60px;
+    margin-top: 41px;
+    max-width: 100%;
   }
 
   .form__offer-container {
@@ -134,13 +136,28 @@
   }
 
   .form__offer-col {
-    margin-right: 50px;
+    margin-right: 61px;
+  }
+
+  .form__text {
+    margin: -3px 0 25px 0;
   }
 
   .form__heading {
+    font-size: 18px;
     margin-bottom: 18px;
-    margin-top: 36px;
+    margin-top: 25px;
+
     width: 100%;
+
+    &--offer {
+      font-size: 22px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .form__input {
+    margin-bottom: 16px;
   }
 }
 

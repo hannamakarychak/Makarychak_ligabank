@@ -4,9 +4,17 @@
   margin-bottom: 110px;
 }
 
+.map__heading {
+  margin: -7px 0 60px 0;
+}
+
 @media only screen and (max-width: 1023px) {
   .map {
     margin-bottom: 80px;
+  }
+
+  .map__heading {
+    margin: 68px 0 36px 0;
   }
 }
 

@@ -39,7 +39,9 @@ const Footer = () => {
             </svg>
             <div>
               <div className="footer__phone-number">*0904</div>
-              <p className="footer__text">Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2</p>
+              <p className="footer__text footer__text--phone">
+                Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2
+              </p>
             </div>
           </div>
           <div className="footer__phone">
@@ -57,7 +59,9 @@ const Footer = () => {
             </svg>
             <div>
               <div className="footer__phone-number">8 800 111 22 33</div>
-              <div className="footer__text">Бесплатный для всех городов России</div>
+              <div className="footer__text footer__text--phone">
+                Бесплатный для всех городов России
+              </div>
             </div>
           </div>
           <ul className="footer__socials-list">

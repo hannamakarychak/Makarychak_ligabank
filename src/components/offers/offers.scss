@@ -2,10 +2,10 @@
   margin-top: 60px;
 }
 .offers__item {
-  padding: 55px 70px 60px 70px;
+  padding: 51px 70px 60px 70px;
   background-color: var(--color-light);
   background-repeat: no-repeat;
-  background-position: 85% 45%;
+  background-position: 82% 45%;
   background-size: 37.6% auto;
   min-height: 400px;
 
@@ -79,7 +79,7 @@
   position: relative;
   font-size: 18px;
   line-height: 23px;
-  margin-bottom: 14px;
+  margin-bottom: 13px;
   padding-left: 21px;
   width: 40%;
 
@@ -101,7 +101,7 @@
 }
 
 .offers__button {
-  padding: 8px 30px;
+  padding: 5px 30px;
 }
 
 .offers__text {
@@ -118,13 +118,13 @@
   position: relative;
   flex: 1 0 auto;
   max-width: 25%;
-  padding: 36px 80px 36px 135px;
+  padding: 38px 10px 39px 63px;
   background-color: white;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   background-repeat: no-repeat;
-  background-position: 38% 50%;
+  background-position: 36% 47%;
 
   &--invest {
     background-image: url('../../img/invest.svg');
@@ -135,12 +135,12 @@
   }
 
   &--insurance {
-    background-position: 35% 50%;
+    background-position: 28% 50%;
     background-image: url('../../img/insurance.svg');
   }
 
   &--online {
-    background-position: 34% 50%;
+    background-position: 23% 50%;
     background-image: url('../../img/online.svg');
   }
 
@@ -163,8 +163,10 @@
     margin-top: 0;
   }
   .offers__item {
-    padding: 55px 0 60px 0;
-    background-position: 100% 53%;
+    padding: 55px 0 0px 0;
+    margin-bottom: -21px;
+    background-size: 42% auto;
+    background-position: 99% 43%;
 
     &--invest {
       background-image: url('../../img/piggybank-tablet.jpg');

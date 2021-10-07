@@ -47,7 +47,7 @@
   &--main {
     position: relative;
     background-image: url('../../img/black-card.png'), url('../../img/white-card.png');
-    background-position: 639px 138px, 748px 80px;
+    background-position: 619px 121px, 728px 64px;
     background-repeat: no-repeat;
     background-size: 335px 228px;
 
@@ -65,13 +65,13 @@
 }
 
 .hero__heading {
-  margin: 0 0 13px 0;
+  margin: -6px 0px 9px 5px;
 }
 
 .hero__moto {
   font-size: 22px;
   color: var(--color-light-secondary);
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 
   &--inverted {
     color: var(--font-color-dark);
@@ -93,7 +93,7 @@
 
 @media only screen and (max-width: 1023px) {
   .hero__slide-container {
-    padding: 60px 0 70px 60px;
+    padding: 66px 0 77px 60px;
 
     &--no-button {
       padding: 62px 0 121px 62px;
@@ -101,12 +101,12 @@
 
     &--main {
       background-size: 260px 175px;
-      background-position: 364px 78px, 448px 34px;
+      background-position: 325px 88px, 410px 45px;
     }
   }
 
   .hero__heading {
-    margin: 0 0 7px 0;
+    margin: 0 0 6px 0;
   }
 
   .hero__moto {
@@ -116,7 +116,7 @@
 
   .hero__button {
     font-size: 16px;
-    padding: 9px 36px;
+    padding: 6px 27px;
     min-width: 20.6rem;
   }
 

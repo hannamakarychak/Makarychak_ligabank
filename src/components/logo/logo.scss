@@ -21,6 +21,15 @@
 @media only screen and (max-width: 1023px) {
   .logo__icon {
     margin-right: 9px;
+    width: 24px;
+    height: 22px;
+  }
+
+  .logo__text {
+    width: 101px;
+    height: 13px;
+    margin-top: 6px;
+    margin-left: -4px;
   }
 }
 
