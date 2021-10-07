@@ -40,7 +40,7 @@ const Map = () => {
 
   return (
     <section>
-      <Container>
+      <Container className="map__container">
         <Heading className="map__heading" secondary>
           Отделения Лига Банка
         </Heading>

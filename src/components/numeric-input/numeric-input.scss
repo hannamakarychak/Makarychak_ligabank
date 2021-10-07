@@ -57,5 +57,12 @@
 @media only screen and (max-width: 1023px) {
   .numeric-input {
     margin: 5px 0 6px;
+    padding: 15px 10px 15px 16px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .numeric-input__field {
+    font-size: 16px;
   }
 }

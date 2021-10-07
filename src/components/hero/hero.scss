@@ -140,7 +140,8 @@
     padding: 37px 15px 48px 15px;
 
     &--main {
-      background-position: 215px 33px, 448px 34px;
+      background-position: 220px 32px, 448px 34px;
+      background-size: 249px 171px;
     }
   }
 
@@ -158,13 +159,14 @@
   }
 
   .slick-dots li {
-    bottom: 20px;
+    bottom: 18px;
+    width: 11px;
   }
 }
 
 .hero__slider-dots {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--blue-dark);
 

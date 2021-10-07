@@ -39,7 +39,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
           <span className="user-form__application-text">Первоначальный взнос</span>
           <span className="user-form__application-value">{initialPayment} рублей</span>
         </div>
-        <div className="user-form__row">
+        <div className="user-form__row user-form__row--last">
           <span className="user-form__application-text">Срок кредитования</span>
           <span className="user-form__application-value">{loanPeriod} лет</span>
         </div>

@@ -74,7 +74,7 @@ const Offers = () => {
 
   return (
     <section className="offers">
-      <Container>
+      <Container className="offers__container">
         {size.width >= BREAKPOINTS.Desktop ? (
           <Tabs>
             <h2 className="visually-hidden">Предложения</h2>

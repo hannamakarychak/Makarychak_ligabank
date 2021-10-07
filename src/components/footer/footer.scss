@@ -112,6 +112,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .footer {
+    margin-top: 60px;
+    padding: 30px 0 50px 0;
+  }
   .footer__wrapper {
     display: block;
   }
@@ -120,11 +124,20 @@
     display: none;
   }
 
+  .footer__text--phone {
+    margin-top: -1px;
+  }
+
   .footer__phone {
-    margin: 30px 0 0;
+    margin: 21px 0 -8px;
+    max-width: 200px;
   }
 
   .footer__socials-list {
     margin: 30px 0 0;
+  }
+
+  .footer__logo {
+    margin-bottom: 18px;
   }
 }

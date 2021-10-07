@@ -103,9 +103,20 @@
   }
 
   .user-form__heading {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 25px;
-    margin: 11px auto 16px auto;
+    margin: 11px 11px 16px 41px;
+    width: 80%;
+  }
+
+  .user-form__row {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding: 14px 0;
+
+    &--last {
+      margin-bottom: 30px;
+    }
   }
 
   .user-form__application-value {
@@ -119,9 +130,17 @@
   }
 
   .user-form__application-input {
-    padding: 16px;
+    padding: 16px 16px 16px 12px;
+    margin: 0;
+    margin-bottom: 20px;
+
     &--half {
       width: 100%;
+      margin-bottom: 20px;
     }
+  }
+
+  .user-form__button {
+    margin-top: 15px;
   }
 }

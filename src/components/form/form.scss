@@ -163,7 +163,7 @@
 
 @media only screen and (max-width: 767px) {
   .form__offer {
-    margin-top: 26px;
+    margin-top: 33px;
     padding: 11px 15px 40px 15px;
   }
 
@@ -177,7 +177,7 @@
   }
 
   .form__text {
-    margin: 0 0 18px 0;
+    margin: 0 0 14px 0;
   }
 
   .form__value {
@@ -186,17 +186,39 @@
 
   .form__submit {
     font-size: 14px;
+    margin-top: 14px;
   }
 
   .form__heading {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 25px;
-    margin: 23px 0 14px 0;
+    margin: 22px 0 10px 0;
+
+    &--offer {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
   }
 
   .form__row {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  [data-reach-listbox-button] {
+    padding: 20px 13px;
+  }
+
+  .form__description {
+    margin-bottom: 11px;
+  }
+
+  .form__input {
+    margin-bottom: 12px;
+  }
+
+  .form__checkbox-label {
+    font-size: 14px;
   }
 }

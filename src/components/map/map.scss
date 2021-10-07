@@ -19,7 +19,18 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .map__container {
+    padding: 0;
+  }
+
   .map {
+    padding: 0 16px;
     margin-bottom: 60px;
+    height: 381px;
+  }
+
+  .map__heading {
+    padding: 0 16px;
+    margin: 54px 0 28px 0;
   }
 }
