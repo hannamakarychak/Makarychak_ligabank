@@ -63,7 +63,9 @@ const Offers = () => {
         Лига Банк — это огромное количество онлайн-сервисов для вашего удобства
       </div>
       <ul className="offers__list">
-        <li className="offers__list-item">Мобильный банк, который всегда под рукой</li>
+        <li className="offers__list-item">
+          Мобильный банк, <br></br> который всегда под рукой
+        </li>
         <li className="offers__list-item">
           Приложение Лига-проездной позволит вам оплачивать билеты по всему миру
         </li>

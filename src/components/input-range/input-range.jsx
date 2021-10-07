@@ -49,12 +49,15 @@ const InputRange = ({
         step={step}
         onChange={onRangeValueChange}
         value={parseInt(rangeValue, 10)}
+        onMouseDown={() => document.body.classList.add('no-select')}
+        onMouseUp={() => document.body.classList.remove('no-select')}
       >
         <SliderTrack>
           <SliderRange />
           <SliderHandle />
         </SliderTrack>
       </SliderInput>
+
       <div className="input-range__description">
         <span className="input-range__sign">{leftSign}</span>
         <span className="input-range__sign">{rightSign}</span>

@@ -36,12 +36,14 @@ const Form = () => {
   const [isPriceValid, setIsPriceValid] = useState(true);
   const [initialPaymentPercentage, setInitialPaymentPercentage] = useState(0);
   const [initialPayment, setInitialPayment] = useState((price * initialPaymentPercentage) / 100);
+  const [isInitialPaymentValid, setIsInitialPaymentValid] = useState(true);
   const [isUserFormVisible, setIsUserFormVisible] = useState(false);
   const [loanPeriod, setLoanPeriod] = useState(0);
   const [isParentCapitalUsed, setIsParentCapitalUsed] = useState(false);
   const [isCascoNeeded, setIsCascoNeeded] = useState(false);
   const [isInsuranceNeeded, setIsInsuranceNeeded] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [orderId, setOrderId] = useState(1);
 
   const isMortgage = goal === 'Ипотека';
   const minPercentage = isMortgage ? MIN_HOUSE_PERCENTAGE : MIN_CAR_PERCENTAGE;
@@ -55,13 +57,15 @@ const Form = () => {
 
   const handleChangePrice = useCallback(
     (newPrice) => {
+      const isValid =
+        !isNaN(parseInt(newPrice, 10)) && newPrice >= minPrice && newPrice <= maxPrice;
+      setIsPriceValid(isValid);
       setPrice(newPrice);
       setInitialPayment((newPrice * minPercentage) / 100);
       setInitialPaymentPercentage(minPercentage);
-      setIsPriceValid(true);
       setIsUserFormVisible(false);
     },
-    [minPercentage]
+    [minPercentage, minPrice, maxPrice]
   );
 
   const resetForm = useCallback(() => {
@@ -81,25 +85,26 @@ const Form = () => {
     setInitialPayment(newInitialPayment);
     setInitialPaymentPercentage((newInitialPayment / price) * 100);
     setIsUserFormVisible(false);
+    setIsInitialPaymentValid(checkIfInitialPaymentValid(newInitialPayment, price));
   };
 
   const handleChangeInitialPaymentPercentage = (newPercentage) => {
     setInitialPaymentPercentage(newPercentage);
-    setInitialPayment(Math.round((newPercentage * price) / 100));
+    const newInitialPayment = Math.round((newPercentage * price) / 100);
+    setInitialPayment(newInitialPayment);
     setIsUserFormVisible(false);
+    setIsInitialPaymentValid(checkIfInitialPaymentValid(newInitialPayment, price));
   };
 
-  const handleValidatePrice = () => {
-    const isValid = !isNaN(parseInt(price, 10)) && price >= minPrice && price <= maxPrice;
-    setIsPriceValid(isValid);
-  };
+  const checkIfInitialPaymentValid = (value, priceValue) =>
+    value / priceValue >= 0.1 && value / priceValue < 1;
 
   const handleValidateInitialPayment = () => {
-    const isInitialPaymentValid = initialPayment / price >= 0.1 && initialPayment / price < 1;
-    if (isInitialPaymentValid) {
+    if (checkIfInitialPaymentValid(initialPayment, price)) {
       return;
     }
 
+    setIsInitialPaymentValid(true);
     handleChangeInitialPayment((price * minPercentage) / 100);
   };
 
@@ -122,12 +127,18 @@ const Form = () => {
       )
     : calculateCarLoan(price, initialPayment, isCascoNeeded, isInsuranceNeeded, loanPeriod);
 
-  const handleFormSubmit = (userData) => {
+  const handleFormSubmit = (data) => {
+    const { id, ...userData } = data;
     localStorage.setItem('userData', JSON.stringify(userData));
     resetForm();
     setIsSuccessPopupOpen(true);
     setGoal('default');
+    setOrderId(id + 1);
   };
+
+  const isFormValid = isPriceValid && isInitialPaymentValid;
+
+  const renderValidValue = (value) => (isFormValid ? value : 'Неккоретное значение');
 
   return (
     <div className="form">
@@ -165,11 +176,12 @@ const Form = () => {
                 Стоимость {isMortgage ? 'недвижимости' : 'автомобиля'}
               </span>
               <NumericInput
-                onBlur={handleValidatePrice}
                 className="form__price-selector"
                 isValid={isPriceValid}
                 value={price}
                 step={priceStep}
+                min={minPrice}
+                max={maxPrice}
                 onChange={handleChangePrice}
               />
               <div className="form__description">
@@ -258,22 +270,26 @@ const Form = () => {
             </Fragment>
           )}
         </div>
-        {isGoalSelected && isPriceValid && (
+        {isGoalSelected && (
           <div className="form__offer">
             {totalLoan >= minTotal ? (
               <Fragment>
                 <h4 className="form__heading form__heading--offer">Наше предложение</h4>
                 <div className="form__offer-container">
                   <div className="form__offer-col">
-                    <div className="form__value">{totalLoan} рублей</div>
+                    <div className="form__value">{renderValidValue(`${totalLoan} рублей`)}</div>
                     <div className="form__text">Сумма {isMortgage ? 'ипотеки' : 'автокредита'}</div>
-                    <div className="form__value">{annuityMonthlyPayment} рублей</div>
+                    <div className="form__value">
+                      {renderValidValue(`${annuityMonthlyPayment} рублей`)}
+                    </div>
                     <div className="form__text">Ежемесячный платеж</div>
                   </div>
                   <div className="form__offer-col">
-                    <div className="form__value">{interestRate}%</div>
+                    <div className="form__value">{renderValidValue(`${interestRate}%`)}</div>
                     <div className="form__text">Процентная ставка</div>
-                    <div className="form__value">{getMinIncome(annuityMonthlyPayment)} рублей</div>
+                    <div className="form__value">
+                      {renderValidValue(`${getMinIncome(annuityMonthlyPayment)} рублей`)}
+                    </div>
                     <div className="form__text">Необходимый доход</div>
                   </div>
                 </div>
@@ -295,13 +311,14 @@ const Form = () => {
           </div>
         )}
       </form>
-      {isUserFormVisible && isPriceValid && (
+      {isUserFormVisible && isFormValid && (
         <UserForm
           goal={goal}
           price={price}
           isMortgage={isMortgage}
           initialPayment={initialPayment}
           loanPeriod={loanPeriod}
+          orderId={orderId}
           onSubmit={handleFormSubmit}
         />
       )}

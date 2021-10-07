@@ -40,13 +40,9 @@
   background-color: inherit;
 
   &--half {
-    width: 47.5%;
+    width: 48%;
     margin-top: 0;
     margin-bottom: 40px;
-
-    &:not(:last-child) {
-      margin-right: 30px;
-    }
   }
 }
 
@@ -74,6 +70,12 @@
     background-color: white;
     padding: 30px 0 0 0;
     margin-top: 0;
+  }
+
+  .user-form__application-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .user-form__heading {

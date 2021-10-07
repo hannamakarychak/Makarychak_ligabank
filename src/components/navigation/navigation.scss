@@ -1,5 +1,8 @@
 .navigation {
   &__list {
+    max-width: 500px;
+    flex-wrap: wrap;
+    justify-content: space-between;
     display: flex;
     list-style: none;
     margin: 0;

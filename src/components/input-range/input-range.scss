@@ -47,6 +47,15 @@
   margin-top: 8px;
 }
 
+[data-reach-slider-input] {
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+[data-reach-slider-handle] {
+  background-color: var(--accent-bg-color);
+}
+
 @media only screen and (max-width: 1023px) {
   .input-range {
     margin: 8px 0 19px;

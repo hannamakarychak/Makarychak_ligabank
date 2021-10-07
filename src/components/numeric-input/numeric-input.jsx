@@ -2,26 +2,20 @@ import classNames from 'classnames';
 
 import './numeric-input.scss';
 
-const NumericInput = ({ value, className, onChange, isValid, onBlur, step }) => {
+const NumericInput = ({ value, className, onChange, isValid, step, min, max }) => {
   return (
-    <div
-      className={classNames(className, 'numeric-input', { 'numeric-input--invalid': !isValid })}
-      onBlur={(e) => {
-        // https://gist.github.com/pstoica/4323d3e6e37e8a23dd59
-        const currentTarget = e.currentTarget;
-        // Check the newly focused element in the next tick of the event loop
-        setTimeout(() => {
-          // Check if the new activeElement is a child of the original container
-          if (!currentTarget.contains(document.activeElement)) {
-            // You can invoke a callback or add custom logic here
-            onBlur();
-          }
-        }, 0);
-      }}
-      tabIndex="-1"
-    >
+    <div className={classNames(className, 'numeric-input', { 'numeric-input--invalid': !isValid })}>
       <button
-        onClick={() => onChange(isValid ? parseInt(value - step, 10) : step)}
+        onClick={() => {
+          if (value === '') {
+            onChange(min);
+            return;
+          }
+          const newValue = parseInt(value - step, 10);
+          if (newValue >= min) {
+            onChange(newValue);
+          }
+        }}
         className="numeric-input__button"
       >
         -
@@ -30,22 +24,26 @@ const NumericInput = ({ value, className, onChange, isValid, onBlur, step }) => 
         className={classNames('numeric-input__field', {
           'numeric-input__field--invalid': !isValid,
         })}
-        value={isValid ? value : 'Некорректное значение'}
+        value={value}
         type="text"
         onChange={(e) => {
           const numericValue = parseInt(e.target.value, 10);
           onChange(isNaN(numericValue) ? '' : numericValue);
         }}
-        onFocus={() => {
-          if (!isValid) {
-            onChange('');
-          }
-        }}
       />
       {isValid && <span className="numeric-input__text">рублей</span>}
 
       <button
-        onClick={() => onChange(isValid ? parseInt(value + step, 10) : step)}
+        onClick={() => {
+          if (value === '') {
+            onChange(max);
+            return;
+          }
+          const newValue = parseInt(value + step, 10);
+          if (newValue <= max) {
+            onChange(newValue);
+          }
+        }}
         className="numeric-input__button"
       >
         +

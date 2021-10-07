@@ -45,6 +45,10 @@
   }
 }
 
+.header__login-text {
+  margin-left: 10px;
+}
+
 @media only screen and (max-width: 1023px) {
   .header {
     padding: 25px 0 20px 0;
@@ -52,6 +56,15 @@
 
   .header__login-text {
     display: none;
+  }
+
+  .header__login-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header__login-link {
+    padding: 0;
   }
 
   .header__login-icon {

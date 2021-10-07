@@ -50,7 +50,7 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
         <label htmlFor="login" className="login-popup__label">
           Логин
         </label>
-        <input className="login-popup__input" id="login" name="login" ref={inputRef} />
+        <input className="login-popup__input" id="login" name="login" ref={inputRef} required />
         <label htmlFor="login" className="login-popup__label">
           Пароль
         </label>
@@ -59,6 +59,7 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
           id="password"
           name="password"
           type={isPasswordShown ? 'text' : 'password'}
+          required
           onMouseDown={handleShowPassword}
           onMouseUp={handleShowPassword}
         />

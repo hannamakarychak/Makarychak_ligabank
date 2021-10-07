@@ -33,6 +33,7 @@
   padding: 20px;
   font-weight: 500;
   color: var(--font-color-dark);
+  cursor: pointer;
 }
 [data-reach-listbox-button][aria-expanded='true'] {
   margin-bottom: 120px;
@@ -44,18 +45,11 @@
 
 [data-reach-listbox-option] {
   padding: 20px 20px;
+  cursor: pointer;
 
   &:nth-child(2) {
     border-bottom: 1px solid #c1c2ca;
   }
-}
-
-[data-reach-slider-input] {
-  margin-left: 7px;
-}
-
-[data-reach-slider-handle] {
-  background-color: var(--accent-bg-color);
 }
 
 .form__label {
@@ -77,6 +71,11 @@
 
 .form__checkbox {
   margin: 0 8px 0 0;
+  cursor: pointer;
+}
+
+.form__checkbox-label {
+  cursor: pointer;
 }
 
 .form__offer {

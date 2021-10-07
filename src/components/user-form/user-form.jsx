@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import './user-form.scss';
 
-const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmit }) => {
+const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmit, orderId }) => {
   const nameInputRef = useRef();
   useEffect(() => {
     nameInputRef.current.focus();
@@ -16,6 +16,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
           userName: e.target.username.value,
           phone: e.target.phone.value,
           email: e.target.email.value,
+          id: orderId,
         });
       }}
     >
@@ -23,7 +24,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
         <h3 className="user-form__heading">Шаг 3. Оформление заявки</h3>
         <div className="user-form__row">
           <span className="user-form__application-text">Номер заявки</span>
-          <span className="user-form__application-value">№ {'1'.padStart(4, '0')}</span>
+          <span className="user-form__application-value">№ {`${orderId}`.padStart(4, '0')}</span>
         </div>
         <div className="user-form__row">
           <span className="user-form__application-text">Цель кредита</span>
@@ -43,7 +44,7 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
           <span className="user-form__application-text">Срок кредитования</span>
           <span className="user-form__application-value">{loanPeriod} лет</span>
         </div>
-        <div>
+        <div className="user-form__application-container">
           <input
             type="text"
             className="user-form__application-input"

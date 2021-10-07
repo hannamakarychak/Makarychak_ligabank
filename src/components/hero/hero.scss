@@ -92,8 +92,17 @@
 }
 
 @media only screen and (max-width: 1023px) {
+  .hero__slide {
+    &--find {
+      background-position-x: 51%;
+    }
+
+    &--security {
+      background-position-x: 62%;
+    }
+  }
   .hero__slide-container {
-    padding: 66px 0 77px 60px;
+    padding: 66px 0 78px 57px;
 
     &--no-button {
       padding: 62px 0 121px 62px;
@@ -142,6 +151,10 @@
     &--main {
       background-position: 220px 32px, 448px 34px;
       background-size: 249px 171px;
+    }
+
+    &--no-button {
+      padding: 68px 0 107px 59px;
     }
   }
 

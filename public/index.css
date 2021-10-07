@@ -60,3 +60,7 @@ body {
   white-space: nowrap;
   width: 1px;
 }
+
+.no-select {
+  user-select: none;
+}
