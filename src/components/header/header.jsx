@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className={classNames('header', { 'header--full-screen': isMenuOpen })}>
       <Container className="header__wrapper">
         <Burger className="header__burger" onClick={() => setIsMenuOpen(!isMenuOpen)} />
         <Logo className="header__logo" />
@@ -35,14 +35,23 @@ const Header = () => {
           className={classNames('header__navigation', { 'header__navigation--open': isMenuOpen })}
           isMenuOpen={isMenuOpen}
         />
-        <button className="header__login-link" onClick={handleOpenLoginPopup}>
-          {!isMenuOpen ? (
+
+        {isMenuOpen ? (
+          <button className="header__navigation-close" onClick={() => setIsMenuOpen(false)}>
+            <svg width="15" height="15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="m1 1 6.5 6.5M14 14 7.5 7.5m0 0L14 1 1 14" stroke="#011C40" strokeWidth="2" />
+            </svg>
+            <span className="header__login-text">Войти в Интернет-банк</span>
+          </button>
+        ) : (
+          <button className="header__login-link" onClick={handleOpenLoginPopup}>
             <svg
-              className="header__login-icon" // TODO: check styles
+              className="header__login-icon"
+              // TODO: check styles
               width="14"
               height="16"
               viewBox="0 0 14 16"
-              fill="none"
+              // fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -50,20 +59,8 @@ const Header = () => {
                 fill="#1F1E25"
               />
             </svg>
-          ) : (
-            <svg
-              className="header__close header__close--tablet"
-              width="15"
-              height="15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="m1 1 6.5 6.5M14 14 7.5 7.5m0 0L14 1 1 14" stroke="#011C40" strokeWidth="2" />
-            </svg>
-          )}
-
-          <span className="header__login-text">Войти в Интернет-банк</span>
-        </button>
+          </button>
+        )}
       </Container>
       <LoginPopup
         isOpen={isLoginPopupOpen}

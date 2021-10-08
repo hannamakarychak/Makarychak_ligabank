@@ -1,52 +1,59 @@
 .header {
   padding: 32px 0;
   background-color: var(--color-light);
+}
 
-  &__logo {
-    align-self: flex-start;
+.header__logo {
+  align-self: flex-start;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__login-link {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 10px;
+  background-color: inherit;
+  border: none;
+  color: var(--font-color-dark);
+
+  &:hover {
+    color: var(--accent-bg-color);
   }
+}
 
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header__login-link svg {
+  fill: var(--font-color-dark);
+  width: 22px;
+  height: 22px;
+
+  &:hover {
+    fill: var(--accent-bg-color); //not working
   }
+}
 
-  &__login-link {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    line-height: 19px;
-    margin-left: 10px;
-    background-color: inherit;
-    border: none;
-    color: var(--font-color-dark);
-
-    &:hover {
-      color: var(--accent-bg-color);
-    }
-
-    &:hover .header__login-icon {
-      fill: var(--accent-bg-color);
-    }
-  }
-
-  &__login-icon {
-    margin-right: 10px;
-    fill: var(--font-color-dark);
-
-    &:hover {
-      fill: var(--accent-bg-color);
-    }
-  }
-
-  &__burger {
-    display: none;
-  }
+.header__burger {
+  display: none;
 }
 
 .header__login-text {
   margin-left: 10px;
+}
+
+.header__navigation-close {
+  background-color: inherit;
+  border: none;
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 16px;
+  padding: 0;
 }
 
 @media only screen and (max-width: 1023px) {
@@ -66,19 +73,19 @@
   .header__login-link {
     padding: 0;
   }
-
-  .header__login-icon {
-    margin-right: -6px;
-  }
-
-  .header__close--tablet {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 767px) {
   .header {
     padding: 13px 0 13px 0;
+
+    &--full-screen {
+      min-height: 100vh;
+
+      & ~ * {
+        display: none;
+      }
+    }
   }
 
   .header__logo {
@@ -109,16 +116,11 @@
   }
 
   .header__navigation--open {
-    height: 100vh;
     overflow: hidden;
+    width: 100%;
   }
-  .header__close {
-    position: absolute;
-    top: 6px;
-    right: 16px;
 
-    &--tablet {
-      display: block;
-    }
+  .header__navigation-close {
+    display: block;
   }
 }

@@ -64,3 +64,12 @@ body {
 .no-select {
   user-select: none;
 }
+
+a:hover {
+  color: #2c36f2;
+}
+
+a:active {
+  color: #2c36f2;
+  opacity: 0.6;
+}
