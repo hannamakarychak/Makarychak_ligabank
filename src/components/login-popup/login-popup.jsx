@@ -23,7 +23,7 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
       aria-label="Логин"
     >
       <div className="login-popup__top">
-        <Logo hasMoto />
+        <Logo hasMoto className="login-popup__logo" />
         <button className="login-popup__close" onClick={onClose}>
           <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

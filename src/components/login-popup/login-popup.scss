@@ -1,4 +1,5 @@
 .login-popup[data-reach-dialog-content] {
+  width: 544px;
   padding: 60px;
   background-color: var(--color-light);
 }
@@ -55,19 +56,42 @@
   color: var(--color-medium-dark);
 }
 
-.login-popup__submit {
-  margin-top: 30px;
+.login-popup__form .login-popup__submit {
   padding: 12px 20px;
+  margin-top: 21px;
 }
 
 @media only screen and (max-width: 1023px) {
   .login-popup[data-reach-dialog-content] {
-    padding: 60px 80px;
-    width: 88%;
+    padding: 56px 90px;
+    width: 678px;
+  }
+
+  .login-popup__close {
+    padding-top: 5px;
+    padding-right: 0;
+  }
+
+  .login-popup__top .logo__icon {
+    width: 31px;
+    height: 30px;
+  }
+
+  .login-popup__top .logo__text {
+    width: 115px;
+    height: 15px;
+  }
+
+  .login-popup__input {
+    margin-bottom: 21px;
+  }
+
+  .login-popup__forget {
+    margin-top: -15px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .login-popup[data-reach-dialog-content] {
     padding: 45px 20px;
     width: 91%;
