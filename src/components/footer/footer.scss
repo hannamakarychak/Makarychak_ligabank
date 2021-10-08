@@ -71,7 +71,7 @@
 .footer__socials-link svg {
   fill: var(--font-color-dark);
   &:hover {
-    fill: var(--accent-bg-color); //not working
+    fill: var(--accent-bg-color);
   }
 
   &:active {

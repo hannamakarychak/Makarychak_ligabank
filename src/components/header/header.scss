@@ -22,6 +22,7 @@
   background-color: inherit;
   border: none;
   color: var(--font-color-dark);
+  cursor: pointer;
 
   &:hover {
     color: var(--accent-bg-color);
@@ -34,7 +35,7 @@
   height: 22px;
 
   &:hover {
-    fill: var(--accent-bg-color); //not working
+    fill: var(--accent-bg-color);
   }
 }
 
