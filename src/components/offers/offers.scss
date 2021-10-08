@@ -259,12 +259,13 @@
     padding: 0;
   }
   .offers__item {
-    padding: 54px 16px 50px 16px;
+    padding: 54px 16px 42px 16px;
     background-size: 28% auto;
     background-position: 101% 37%;
 
     &--invest {
       background-image: url('../../img/piggybank-mobile.jpg');
+      padding: 54px 16px 56px 16px;
 
       @media only screen and (min--moz-device-pixel-ratio: 2),
         only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -276,6 +277,7 @@
 
     &--loan {
       background-image: url('../../img/car-mobile.jpg');
+      background-position: 100% 48%;
 
       @media only screen and (min--moz-device-pixel-ratio: 2),
         only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -287,6 +289,8 @@
 
     &--insurance {
       background-image: url('../../img/lock-mobile.jpg');
+      padding: 54px 16px 42px 16px;
+      background-position: 100% 50%;
 
       @media only screen and (min--moz-device-pixel-ratio: 2),
         only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -298,6 +302,7 @@
 
     &--online {
       background-image: url('../../img/phone-mobile.jpg');
+      background-position: 101% 41%;
 
       @media only screen and (min--moz-device-pixel-ratio: 2),
         only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -312,13 +317,28 @@
     font-size: 16px;
     line-height: 22px;
     padding-bottom: 20px;
-    width: 100%;
+
+    &--invest {
+      width: 100%;
+    }
+
+    &--insurance {
+      width: 90%;
+    }
+
+    &--loan {
+      width: 80%;
+    }
+
+    &--online {
+      width: 80%;
+    }
   }
 
   .offers__text {
     font-size: 14px;
     line-height: 18px;
-    width: 80%;
+    width: 89%;
   }
 
   .offers__button {
@@ -326,6 +346,7 @@
     line-height: 16px;
     padding: 13px 30px;
     width: 100%;
+    max-width: 290px;
   }
 
   .offers__list-item {
@@ -360,4 +381,8 @@
 .slick-dots .slick-active .ft-slick__dots--custom:focus,
 .slick-dots .slick-active .ft-slick__dots--custom:active {
   background-color: #e0e0e0;
+}
+
+.slick-list {
+  height: 362px; //check if good solution
 }

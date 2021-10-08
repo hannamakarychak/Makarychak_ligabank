@@ -25,7 +25,9 @@ const Offers = () => {
 
   const offers = [
     <div className="offers__item offers__item--invest" key="offer-invest">
-      <div className="offers__moto">Вклады Лига Банка – это выгодная инвестиция в свое будущее</div>
+      <div className="offers__moto offers__moto--invest">
+        Вклады Лига Банка – это выгодная инвестиция в свое будущее
+      </div>
       <ul className="offers__list">
         <li className="offers__list-item">Проценты по вкладам до 7%</li>
         <li className="offers__list-item">Разнообразные условия</li>
@@ -36,7 +38,7 @@ const Offers = () => {
       <button className="offers__button button">Узнать подробнее</button>
     </div>,
     <div className="offers__item offers__item--loan" key="offer-loan">
-      <div className="offers__moto">Лига Банк выдает кредиты под любые цели</div>
+      <div className="offers__moto offers__moto--loan">Лига Банк выдает кредиты под любые цели</div>
       <ul className="offers__list">
         <li className="offers__list-item">Ипотечный кредит</li>
         <li className="offers__list-item">Автокредит</li>
@@ -50,7 +52,9 @@ const Offers = () => {
       </div>
     </div>,
     <div className="offers__item offers__item--insurance" key="offer-insurance">
-      <div className="offers__moto">Лига Страхование — застрахуем все что захотите</div>
+      <div className="offers__moto offers__moto--insurance">
+        Лига Страхование — застрахуем все что захотите
+      </div>
       <ul className="offers__list">
         <li className="offers__list-item">Автомобильное страхование</li>
         <li className="offers__list-item">Страхование жизни и здоровья</li>
