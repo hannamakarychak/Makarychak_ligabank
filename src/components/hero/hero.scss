@@ -135,6 +135,9 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .hero {
+    height: 228px; //check if ok solution
+  }
   .hero__slide {
     &--security {
       background-position: 63% 50%;
@@ -207,4 +210,8 @@
 .slick-dots .slick-active .hero__slider-dots:focus,
 .slick-dots .slick-active .hero__slider-dots:active {
   background-color: var(--color-light);
+}
+
+.slick-slider {
+  height: 100%;
 }
