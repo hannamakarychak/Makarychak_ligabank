@@ -63,7 +63,7 @@ const Offers = () => {
       <button className="offers__button button">Узнать подробнее</button>
     </div>,
     <div className="offers__item offers__item--online" key="offer-online">
-      <div className="offers__moto--online">
+      <div className="offers__moto offers__moto--online">
         Лига Банк — это огромное количество онлайн-сервисов для вашего удобства
       </div>
       <ul className="offers__list">
