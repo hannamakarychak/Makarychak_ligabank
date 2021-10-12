@@ -92,7 +92,9 @@ const Offers = () => {
             </TabList>
             <TabPanels>
               {offers.map((el) => (
-                <TabPanel key={el.key}>{el}</TabPanel>
+                <TabPanel tabIndex="-1" key={el.key}>
+                  {el}
+                </TabPanel>
               ))}
             </TabPanels>
           </Tabs>

@@ -50,7 +50,14 @@ const LoginPopup = ({ isOpen, onClose, onSubmit }) => {
         <label htmlFor="login" className="login-popup__label">
           Логин
         </label>
-        <input className="login-popup__input" id="login" name="login" ref={inputRef} required />
+        <input
+          className="login-popup__input"
+          id="login"
+          name="login"
+          ref={inputRef}
+          required
+          type="text"
+        />
         <label htmlFor="login" className="login-popup__label">
           Пароль
         </label>
