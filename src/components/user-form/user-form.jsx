@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { getNumberWithSpaces } from '../../utils/numbers';
+import InputMask from 'react-input-mask';
 import './user-form.scss';
 
 const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmit, orderId }) => {
@@ -57,12 +58,13 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
             ref={nameInputRef}
             name="username"
           />
-          <input
+          <InputMask
+            mask="+7 (999) 999-99-99"
             className="user-form__application-input user-form__application-input--half"
             id="tel"
             placeholder="Телефон"
             type="tel"
-            pattern="^\+?7(\d{10})$"
+            pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
             required
             name="phone"
           />
