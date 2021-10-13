@@ -237,21 +237,6 @@
       margin-bottom: 33px;
     }
   }
-
-  .ft-slick__dots--custom {
-    background: var(--blue-dark);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  .slick-active .ft-slick__dots--custom {
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: #e0e0e0;
-    }
-  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -366,19 +351,7 @@
     }
   }
 
-  .ft-slick__dots--custom {
-    width: 6px;
-    height: 6px;
+  .offers .slick-dots {
+    bottom: 7px;
   }
-
-  .slick-dots {
-    right: -3px;
-  }
-}
-
-.slick-dots .slick-active .ft-slick__dots--custom,
-.slick-dots .slick-active .ft-slick__dots--custom:hover,
-.slick-dots .slick-active .ft-slick__dots--custom:focus,
-.slick-dots .slick-active .ft-slick__dots--custom:active {
-  background-color: #e0e0e0;
 }

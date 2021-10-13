@@ -1,5 +1,6 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 import Slider from 'react-slick';
+import { useEffect, useState } from 'react';
 
 import { useWindowSize } from '../../hooks/use-window-size/use-window-size';
 import Container from '../container/container';
@@ -12,6 +13,7 @@ import './offers.scss';
 
 const Offers = () => {
   const size = useWindowSize();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: true,
@@ -19,9 +21,18 @@ const Offers = () => {
     speed: 500,
     autoplaySpeed: 4000,
     arrows: false,
-    appendDots: (dots) => <ul>{dots}</ul>,
-    customPaging: (i) => <div className="ft-slick__dots--custom" />,
+    beforeChange: (_, nextSlide) => setCurrentSlide(nextSlide),
   };
+
+  useEffect(() => {
+    Array.from(document.querySelectorAll('.offers .focusable')).forEach((buttonElement) => {
+      buttonElement.setAttribute('tabindex', '-1');
+    });
+
+    document
+      .querySelector(`[data-index="${currentSlide}"] .focusable`)
+      ?.setAttribute('tabindex', '0');
+  }, [currentSlide]);
 
   const offers = [
     <div className="offers__item offers__item--invest" key="offer-invest">
@@ -35,7 +46,7 @@ const Offers = () => {
           Возможность ежемесячной капитализации или вывод процентов на банковскую карту
         </li>
       </ul>
-      <button className="offers__button button">Узнать подробнее</button>
+      <button className="offers__button focusable button">Узнать подробнее</button>
     </div>,
     <div className="offers__item offers__item--loan" key="offer-loan">
       <div className="offers__moto offers__moto--loan">Лига Банк выдает кредиты под любые цели</div>
@@ -46,7 +57,7 @@ const Offers = () => {
       </ul>
       <div className="offers__text">
         Рассчитайте ежемесячный платеж и ставку по кредиту воспользовавшись нашим &nbsp;
-        <a className="offers__link" href="/">
+        <a className="offers__link focusable" href="/">
           кредитным калькулятором
         </a>
       </div>
@@ -60,7 +71,7 @@ const Offers = () => {
         <li className="offers__list-item">Страхование жизни и здоровья</li>
         <li className="offers__list-item">Страхование недвижимости</li>
       </ul>
-      <button className="offers__button button">Узнать подробнее</button>
+      <button className="offers__button focusable button">Узнать подробнее</button>
     </div>,
     <div className="offers__item offers__item--online" key="offer-online">
       <div className="offers__moto offers__moto--online">
@@ -74,7 +85,7 @@ const Offers = () => {
           Приложение Лига-проездной позволит вам оплачивать билеты по всему миру
         </li>
       </ul>
-      <button className="offers__button button">Узнать подробнее</button>
+      <button className="offers__button focusable button">Узнать подробнее</button>
     </div>,
   ];
 

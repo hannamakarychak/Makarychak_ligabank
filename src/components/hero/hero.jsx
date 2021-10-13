@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SlickSlider from 'react-slick';
 import Container from '../container/container';
 import Button from '../button/button';
@@ -9,15 +9,26 @@ import 'slick-carousel/slick/slick-theme.css';
 import './hero.scss';
 
 const Slider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     autoplay: false,
     autoplaySpeed: 4000,
-    appendDots: (dots) => <ul>{dots}</ul>,
-    customPaging: (i) => <div className="hero__slider-dots" />,
+    arrows: false,
+    beforeChange: (_, nextSlide) => setCurrentSlide(nextSlide),
   };
+
+  useEffect(() => {
+    Array.from(document.querySelectorAll('.hero .hero__button')).forEach((buttonElement) => {
+      buttonElement.setAttribute('tabindex', '-1');
+    });
+
+    document
+      .querySelector(`[data-index="${currentSlide}"] .hero__button`)
+      ?.setAttribute('tabindex', '0');
+  }, [currentSlide]);
 
   return (
     <section className="hero">
