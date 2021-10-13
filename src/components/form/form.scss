@@ -88,7 +88,14 @@
 
 .form__offer-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.form__offer-item {
+  width: 50%;
+  flex: 0 0 auto;
+  padding: 0 8px;
 }
 
 .form__value {
@@ -131,12 +138,8 @@
     max-width: 100%;
   }
 
-  .form__offer-container {
-    justify-content: flex-start;
-  }
-
-  .form__offer-col {
-    margin-right: 61px;
+  .form__offer-item {
+    width: 40%;
   }
 
   .form__text {
@@ -167,8 +170,8 @@
     padding: 11px 15px 40px 15px;
   }
 
-  .form__offer-container {
-    flex-direction: column;
+  .form__offer-item {
+    width: 100%;
   }
 
   .form__value {

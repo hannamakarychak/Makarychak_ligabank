@@ -282,21 +282,25 @@ const Form = () => {
               <Fragment>
                 <h4 className="form__heading form__heading--offer">Наше предложение</h4>
                 <div className="form__offer-container">
-                  <div className="form__offer-col">
+                  <div className="form__offer-item">
                     <div className="form__value">
                       {renderValidValue(`${getNumberWithSpaces(totalLoan)} рублей`)}
                     </div>
                     <div className="form__text">Сумма {isMortgage ? 'ипотеки' : 'автокредита'}</div>
+                  </div>
+                  <div className="form__offer-item">
+                    <div className="form__value">
+                      {renderValidValue(`${interestRate.toFixed(2)}%`)}
+                    </div>
+                    <div className="form__text">Процентная ставка</div>
+                  </div>
+                  <div className="form__offer-item">
                     <div className="form__value">
                       {renderValidValue(`${getNumberWithSpaces(annuityMonthlyPayment)} рублей`)}
                     </div>
                     <div className="form__text">Ежемесячный платеж</div>
                   </div>
-                  <div className="form__offer-col">
-                    <div className="form__value">
-                      {renderValidValue(`${interestRate.toFixed(2)}%`)}
-                    </div>
-                    <div className="form__text">Процентная ставка</div>
+                  <div className="form__offer-item">
                     <div className="form__value">
                       {renderValidValue(
                         `${getNumberWithSpaces(getMinIncome(annuityMonthlyPayment))} рублей`
