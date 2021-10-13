@@ -72,3 +72,20 @@ export function calculateCarLoan(price, initialPayment, withCasco, withInsurance
     annuityMonthlyPayment,
   };
 }
+
+export const getYearUnit = (period) => {
+  if (period.toString().endsWith('1')) {
+    return 'год';
+  }
+
+  if (
+    (period.toString().endsWith('2') ||
+      period.toString().endsWith('3') ||
+      period.toString().endsWith('4')) &&
+    (period < 10 || period > 20)
+  ) {
+    return 'года';
+  }
+
+  return 'лет';
+};

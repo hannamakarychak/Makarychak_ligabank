@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { getNumberWithSpaces } from '../../utils/numbers';
 import InputMask from 'react-input-mask';
 import './user-form.scss';
+import { getYearUnit } from '../../utils/calculators';
 
 const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmit, orderId }) => {
   const nameInputRef = useRef();
@@ -46,7 +47,9 @@ const UserForm = ({ goal, price, isMortgage, initialPayment, loanPeriod, onSubmi
         </div>
         <div className="user-form__row user-form__row--last">
           <span className="user-form__application-text">Срок кредитования</span>
-          <span className="user-form__application-value">{loanPeriod} лет</span>
+          <span className="user-form__application-value">
+            {loanPeriod} {getYearUnit(loanPeriod)}
+          </span>
         </div>
         <div className="user-form__application-container">
           <input

@@ -6,7 +6,12 @@ import NumericInput from '../numeric-input/numeric-input';
 import InputRange from '../input-range/input-range';
 import UserForm from '../user-form/user-form';
 import SuccessMessage from '../success-message/success-message';
-import { calculateCarLoan, calculateMortgage, getMinIncome } from '../../utils/calculators';
+import {
+  calculateCarLoan,
+  calculateMortgage,
+  getMinIncome,
+  getYearUnit,
+} from '../../utils/calculators';
 import { getNumberWithSpaces } from '../../utils/numbers';
 
 import './form.scss';
@@ -211,8 +216,8 @@ const Form = () => {
                     value={loanPeriod}
                     rangeValue={loanPeriod}
                     isValid={isPriceValid}
-                    unit="лет"
-                    leftSign={`${minPeriod} лет`}
+                    unit={getYearUnit(loanPeriod)}
+                    leftSign={`${minPeriod} ${getYearUnit(minPeriod)}`}
                     rightSign={`${maxPeriod} лет`}
                     min={minPeriod}
                     max={maxPeriod}
@@ -288,7 +293,9 @@ const Form = () => {
                     <div className="form__text">Ежемесячный платеж</div>
                   </div>
                   <div className="form__offer-col">
-                    <div className="form__value">{renderValidValue(`${interestRate}%`)}</div>
+                    <div className="form__value">
+                      {renderValidValue(`${interestRate.toFixed(2)}%`)}
+                    </div>
                     <div className="form__text">Процентная ставка</div>
                     <div className="form__value">
                       {renderValidValue(
