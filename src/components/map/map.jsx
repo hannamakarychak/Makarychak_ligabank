@@ -39,12 +39,12 @@ const Map = () => {
   }, []);
 
   return (
-    <section>
-      <Container className="map__container">
+    <section className="map">
+      <Container>
         <Heading className="map__heading" secondary>
           Отделения Лига Банка
         </Heading>
-        <div className="map" id="map"></div>
+        <div className="map__area" id="map"></div>
       </Container>
     </section>
   );
