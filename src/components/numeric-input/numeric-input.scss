@@ -52,6 +52,7 @@
   border: none;
   background-color: transparent;
   font-size: 20px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -63,6 +64,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .numeric-input {
+    margin: 9px 0 6px;
+  }
+
   .numeric-input__field {
     font-size: 16px;
   }

@@ -80,7 +80,7 @@
 
 .form__offer {
   background-color: var(--color-light);
-  padding: 16px 60px 60px 60px;
+  padding: 16px 8px 60px 60px;
   flex: 1 1 auto;
   max-width: 500px;
   margin-top: 45px;
@@ -119,6 +119,7 @@
 .form__submit {
   width: 100%;
   margin-top: 8px;
+  max-width: 382px;
 }
 
 @media only screen and (max-width: 1023px) {
@@ -129,7 +130,6 @@
   .form__fields {
     max-width: 100%;
     padding: 0;
-    margin-right: 10px;
   }
 
   .form__offer {
@@ -162,11 +162,15 @@
   .form__input {
     margin-bottom: 16px;
   }
+
+  .form__submit {
+    max-width: 558px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
   .form__offer {
-    margin-top: 33px;
+    margin-top: 27px;
     padding: 11px 15px 40px 15px;
   }
 
@@ -195,7 +199,7 @@
   .form__heading {
     font-size: 16px;
     line-height: 25px;
-    margin: 22px 0 10px 0;
+    margin: 25px 0 8px 0;
 
     &--offer {
       font-size: 18px;

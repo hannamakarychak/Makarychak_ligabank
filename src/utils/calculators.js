@@ -74,7 +74,7 @@ export function calculateCarLoan(price, initialPayment, withCasco, withInsurance
 }
 
 export const getYearUnit = (period) => {
-  if (period.toString().endsWith('1')) {
+  if (period.toString().endsWith('1' && !'11')) {
     return 'год';
   }
 
